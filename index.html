@@ -4,7 +4,7 @@
     <meta charset="UTF-8" />
     <link rel="icon" type="image/svg+xml" href="/vite.svg" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Vite + React</title>
+    <title>Accounting System</title>
     <link
       href="public/assets/plugins/simplebar/css/simplebar.css"
       rel="stylesheet"
@@ -94,16 +94,17 @@
     <script src="public/assets/plugins/datetimepicker/js/picker.date.js"></script>
     <script src="public/assets/plugins/bootstrap-material-datetimepicker/js/moment.min.js"></script>
     <script src="public/assets/plugins/bootstrap-material-datetimepicker/js/bootstrap-material-datetimepicker.min.js"></script>
-    <!-- chart apex -->
-    <script src="public/assets/plugins/apexcharts-bundle/js/apexcharts.min.js"></script>
-    <script src="public/assets/plugins/apexcharts-bundle/js/apex-custom.js"></script>
-    <script src="public/assets/js/index4.js"></script>
+
     <script src="public/assets/js/toggle-button.js"></script>
     <script src="public/assets/js/app.js"></script>
 
     <script>
       $(document).ready(function () {
-        var table = $("#participant").DataTable({});
+        var table = $("#listLookup").DataTable({});
+      });
+
+      $(document).ready(function () {
+        var table = $("#listLookupDetail").DataTable({});
       });
     </script>
   </body>

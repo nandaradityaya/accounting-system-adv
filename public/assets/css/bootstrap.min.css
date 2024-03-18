@@ -332,6 +332,7 @@ textarea {
   font-family: inherit;
   font-size: inherit;
   line-height: inherit;
+  border-radius: 5px !important;
 }
 button,
 select {
@@ -5263,7 +5264,7 @@ fieldset:disabled .btn {
   background-color: #fff;
   background-clip: padding-box;
   border: 1px solid rgba(0, 0, 0, 0.2);
-  border-radius: 0.3rem;
+  border-radius: 10px;
   outline: 0;
 }
 .modal-backdrop {

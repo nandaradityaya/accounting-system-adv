@@ -2,6 +2,7 @@ import { Navigate, Route, Routes } from "react-router-dom";
 
 import { ReferenceRoute } from "./master/ReferenceRoute";
 import { DocumentNumberingRoute } from "./master/DocumentNumbering";
+import { PeriodRoute } from "./master/PeriodRoute";
 
 export function AppRoutes() {
   return (
@@ -11,6 +12,7 @@ export function AppRoutes() {
         path="master/document-numbering/*"
         element={<DocumentNumberingRoute />}
       />
+      <Route path="master/period/*" element={<PeriodRoute />} />
 
       <Route path="" element={<Navigate to="/" replace={true} />} />
     </Routes>

@@ -967,31 +967,38 @@ a {
 }
 
 .font-weight-bold {
-  font-weight: 700 !important;
+  font-weight: 500 !important;
 }
 
 .radius-4 {
-  border-radius: 4px;
+  border-radius: 4px !important;
+}
+
+.radius-5 {
+  border-radius: 5px !important;
+}
+.radius-6 {
+  border-radius: 6px !important;
 }
 
 .radius-8 {
-  border-radius: 8px;
+  border-radius: 8px !important;
 }
 
 .radius-30 {
-  border-radius: 30px;
+  border-radius: 30px !important;
 }
 
 .radius-10 {
-  border-radius: 10px;
+  border-radius: 10px !important;
 }
 
 .radius-15 {
-  border-radius: 15px;
+  border-radius: 15px !important;
 }
 
 .radius-100 {
-  border-radius: 100%;
+  border-radius: 100% !important;
 }
 
 .cursor-pointer {
@@ -3537,6 +3544,10 @@ input::placeholder {
 }
 .select-image:hover {
   background: #1875ff;
+}
+
+.width-450 {
+  width: 450px;
 }
 
 /* ------------ */

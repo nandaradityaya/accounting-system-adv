@@ -1,5 +1,6 @@
 /* eslint-disable react/prop-types */
 // import React from "react";
+import { Link } from "react-router-dom";
 
 function CBreadcrumb({ textFirst, textSecond, textThird, urlSecond }) {
   return (
@@ -22,7 +23,7 @@ function CBreadcrumb({ textFirst, textSecond, textThird, urlSecond }) {
 
             {textThird && (
               <li className="breadcrumb-item">
-                <a href={urlSecond}>{textSecond}</a>
+                <Link to={urlSecond}>{textSecond}</Link>
               </li>
             )}
 

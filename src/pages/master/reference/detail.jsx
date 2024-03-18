@@ -1,4 +1,5 @@
 // import React from "react";
+import { useParams } from "react-router-dom";
 import CBreadcrumb from "../../../components/Breadcrumb";
 import CButtonDelete from "../../../components/BtnActionDelete";
 import CButtonEdit from "../../../components/BtnActionEdit";
@@ -7,12 +8,8 @@ import CCard from "../../../components/Card";
 import TextInput from "../../../components/TextInput";
 import DataTable from "react-data-table-component";
 import { useState } from "react";
-import CButtonViewDetail from "../../../components/ButtonViewDetail";
-import TextArea from "../../../components/TextArea";
-import { useNavigate } from "react-router-dom";
 
-export default function DocumentNumbering() {
-  const navigate = useNavigate();
+export default function ReferenceDetail() {
   const [filterText, setFilterText] = useState("");
   const columns = [
     {
@@ -21,49 +18,41 @@ export default function DocumentNumbering() {
       sortable: true,
     },
     {
-      name: "Company",
-      selector: (row) => row.company,
+      name: "Lookup Code",
+      selector: (row) => row.lookupCode,
       sortable: true,
     },
     {
-      name: "Document Code",
-      selector: (row) => row.documentCode,
+      name: "Lookup Value 1",
+      selector: (row) => row.lookupValue1,
       sortable: true,
     },
     {
-      name: "Description",
-      selector: (row) => row.description,
+      name: "Lookup Value 2",
+      selector: (row) => row.lookupValue2,
       sortable: true,
     },
     {
-      name: "Prefix",
-      selector: (row) => row.prefix,
+      name: "Lookup Value 3",
+      selector: (row) => row.lookupValue3,
       sortable: true,
     },
     {
-      name: "Sufix",
-      selector: (row) => row.sufix,
+      name: "Lookup Value 4",
+      selector: (row) => row.lookupValue4,
       sortable: true,
     },
     {
-      name: "View Detail",
-      cell: () => (
-        <CButtonViewDetail
-          action={() => navigate("/master/document-numbering/1234")}
-        />
-      ),
+      name: "Display Lookup",
+      selector: (row) => row.displayLookup,
       sortable: true,
-      // button: true, // Set button property to true
-      ignoreRowClick: true,
-      allowOverflow: true,
     },
     {
       name: "Action",
-      sortable: true,
       cell: () => (
         <div className="d-flex order-actions">
-          <CButtonEdit modal={"modal"} modalTarget={"#editDocument"} />
-          <CButtonDelete modal={"modal"} modalTarget={"#deleteData"} />
+          <CButtonEdit modal={"modal"} modalTarget={"#editLookupCode"} />
+          <CButtonDelete modal={"modal"} modalTarget={"#deleteLookupCode"} />
         </div>
       ),
       //   button: true, // Set button property to true
@@ -76,11 +65,22 @@ export default function DocumentNumbering() {
     {
       id: 1,
       no: 1,
-      company: "PT. Advantage SCM",
-      documentCode: "23",
-      description: "43",
-      prefix: "64",
-      sufix: "87",
+      lookupCode: "ACST",
+      lookupValue1: "23",
+      lookupValue2: "43",
+      lookupValue3: "64",
+      lookupValue4: "87",
+      displayLookup: "Test",
+    },
+    {
+      id: 2,
+      no: 2,
+      lookupCode: "BNKK",
+      lookupValue1: "54",
+      lookupValue2: "32",
+      lookupValue3: "89",
+      lookupValue4: "65",
+      displayLookup: "Test Display",
     },
   ];
 
@@ -91,33 +91,40 @@ export default function DocumentNumbering() {
 
   const filteredItems = data.filter(
     (item) =>
-      item.company.toLowerCase().includes(filterText.toLowerCase()) ||
-      item.documentCode.toLowerCase().includes(filterText.toLowerCase()) ||
-      item.description.toLowerCase().includes(filterText.toLowerCase()) ||
-      item.prefix.toLowerCase().includes(filterText.toLowerCase()) ||
-      item.sufix.toLowerCase().includes(filterText.toLowerCase())
+      item.lookupCode.toLowerCase().includes(filterText.toLowerCase()) ||
+      item.lookupValue1.toLowerCase().includes(filterText.toLowerCase()) ||
+      item.lookupValue2.toLowerCase().includes(filterText.toLowerCase()) ||
+      item.lookupValue3.toLowerCase().includes(filterText.toLowerCase()) ||
+      item.lookupValue4.toLowerCase().includes(filterText.toLowerCase()) ||
+      item.displayLookup.toLowerCase().includes(filterText.toLowerCase())
   );
 
+  let { referenceId } = useParams();
+  console.log("params >>");
+  console.log(referenceId);
   return (
     <>
       <div className="page-wrapper">
         <div className="page-content">
           <CBreadcrumb
             textFirst={"Master"}
-            textSecond={"Document Numbering"}
+            textSecond={"Reference"}
+            textThird={"ACST"}
+            urlSecond={"/master/reference"}
           ></CBreadcrumb>
 
           <CCard>
             <div className="card-body">
               <div className="d-flex align-items-center mb-2">
                 <div>
-                  <h5 className="font-weight-bold mb-2">List of Document</h5>
+                  <h5 className="font-weight-bold mb-2">ACST</h5>
+                  <p>Type Sub Account</p>
                 </div>
                 <div className="ms-auto mt-2">
                   <CButton
                     className={"btn btn-primary d-flex align-items-center"}
                     modal={"modal"}
-                    modalTarget={"#addNewDocument"}
+                    modalTarget={"#addNewLookupCode"}
                   >
                     <i className="bx bx-plus"></i>Add New
                   </CButton>
@@ -134,9 +141,7 @@ export default function DocumentNumbering() {
                   />
                 </div>
               </div>
-              <div className="table-responsive">
-                <DataTable columns={columns} data={filteredItems} pagination />
-              </div>
+              <DataTable columns={columns} data={filteredItems} pagination />
             </div>
           </CCard>
         </div>
@@ -144,16 +149,16 @@ export default function DocumentNumbering() {
         {/* MODAL ADD NEW */}
         <div
           className="modal fade"
-          id="addNewDocument"
+          id="addNewLookupCode"
           tabIndex={-1}
-          aria-labelledby="addNewDocumentLabel"
+          aria-labelledby="addNewLookupCodeLabel"
           aria-hidden="true"
         >
           <div className="modal-dialog modal-lg modal-dialog-centered">
             <div className="modal-content">
               <div className="modal-header">
-                <h5 className="modal-title" id="addNewDocumentLabel">
-                  Add New Document
+                <h5 className="modal-title" id="addNewLookupCodeLabel">
+                  Add New Lookup Code
                 </h5>
                 <button
                   type="button"
@@ -165,15 +170,6 @@ export default function DocumentNumbering() {
               <div className="modal-body">
                 <div className="mb-3">
                   <TextInput
-                    label={"Company"}
-                    type={"text"}
-                    className={"form-control"}
-                    id={"company"}
-                    placeholder={"Company..."}
-                  />
-                </div>
-                <div className="mb-3">
-                  <TextInput
                     label={"Code"}
                     type={"text"}
                     className={"form-control"}
@@ -181,53 +177,52 @@ export default function DocumentNumbering() {
                     placeholder={"Code..."}
                   />
                 </div>
+                <div className="row mb-3">
+                  <div className="col-12 col-lg-3">
+                    <TextInput
+                      label={"Lookup Value 1"}
+                      type={"text"}
+                      className={"form-control"}
+                      id={"value1"}
+                      placeholder={"Value..."}
+                    />
+                  </div>
+                  <div className="col-12 col-lg-3">
+                    <TextInput
+                      label={"Lookup Value 2"}
+                      type={"text"}
+                      className={"form-control"}
+                      id={"value2"}
+                      placeholder={"Value..."}
+                    />
+                  </div>
+                  <div className="col-12 col-lg-3">
+                    <TextInput
+                      label={"Lookup Value 3"}
+                      type={"text"}
+                      className={"form-control"}
+                      id={"value3"}
+                      placeholder={"Value..."}
+                    />
+                  </div>
+                  <div className="col-12 col-lg-3">
+                    <TextInput
+                      label={"Lookup Value 1"}
+                      type={"text"}
+                      className={"form-control"}
+                      id={"value4"}
+                      placeholder={"Value..."}
+                    />
+                  </div>
+                </div>
                 <div className="mb-3">
-                  <TextArea
-                    label={"Description"}
+                  <TextInput
+                    label={"Display Lookup"}
                     type={"text"}
                     className={"form-control"}
-                    id={"description"}
-                    placeholder={"Description..."}
-                    rows={3}
+                    id={"displayLookup"}
+                    placeholder={"Display Lookup..."}
                   />
-                </div>
-                <div className="row">
-                  <div className="col-12 col-lg-6 mb-3">
-                    <TextInput
-                      label={"Prefix"}
-                      type={"text"}
-                      className={"form-control"}
-                      id={"prefix"}
-                      placeholder={"Prefix..."}
-                    />
-                  </div>
-                  <div className="col-12 col-lg-6 mb-3">
-                    <TextInput
-                      label={"Sufix"}
-                      type={"text"}
-                      className={"form-control"}
-                      id={"sufix"}
-                      placeholder={"Sufix..."}
-                    />
-                  </div>
-                  <div className="col-12 col-lg-6 mb-3">
-                    <TextInput
-                      label={"Length of Number"}
-                      type={"text"}
-                      className={"form-control"}
-                      id={"lengthOfNumber"}
-                      placeholder={"Length of Number..."}
-                    />
-                  </div>
-                  <div className="col-12 col-lg-6 mb-3">
-                    <TextInput
-                      label={"Reset By"}
-                      type={"text"}
-                      className={"form-control"}
-                      id={"resetBy"}
-                      placeholder={"Reset By..."}
-                    />
-                  </div>
                 </div>
               </div>
               <div className="modal-footer">
@@ -248,15 +243,15 @@ export default function DocumentNumbering() {
         {/* MODAL EDIT */}
         <div
           className="modal fade"
-          id="editDocument"
+          id="editLookupCode"
           tabIndex={-1}
-          aria-labelledby="editDocumentLabel"
+          aria-labelledby="editLookupCodeLabel"
           aria-hidden="true"
         >
           <div className="modal-dialog modal-lg modal-dialog-centered">
             <div className="modal-content">
               <div className="modal-header">
-                <h5 className="modal-title" id="editDocumentLabel">
+                <h5 className="modal-title" id="editLookupCodeLabel">
                   Edit Lookup Code
                 </h5>
                 <button
@@ -269,15 +264,6 @@ export default function DocumentNumbering() {
               <div className="modal-body">
                 <div className="mb-3">
                   <TextInput
-                    label={"Company"}
-                    type={"text"}
-                    className={"form-control"}
-                    id={"company"}
-                    placeholder={"Company..."}
-                  />
-                </div>
-                <div className="mb-3">
-                  <TextInput
                     label={"Code"}
                     type={"text"}
                     className={"form-control"}
@@ -285,53 +271,52 @@ export default function DocumentNumbering() {
                     placeholder={"Code..."}
                   />
                 </div>
+                <div className="row mb-3">
+                  <div className="col-12 col-lg-3">
+                    <TextInput
+                      label={"Lookup Value 1"}
+                      type={"text"}
+                      className={"form-control"}
+                      id={"value1"}
+                      placeholder={"Value..."}
+                    />
+                  </div>
+                  <div className="col-12 col-lg-3">
+                    <TextInput
+                      label={"Lookup Value 2"}
+                      type={"text"}
+                      className={"form-control"}
+                      id={"value2"}
+                      placeholder={"Value..."}
+                    />
+                  </div>
+                  <div className="col-12 col-lg-3">
+                    <TextInput
+                      label={"Lookup Value 3"}
+                      type={"text"}
+                      className={"form-control"}
+                      id={"value3"}
+                      placeholder={"Value..."}
+                    />
+                  </div>
+                  <div className="col-12 col-lg-3">
+                    <TextInput
+                      label={"Lookup Value 1"}
+                      type={"text"}
+                      className={"form-control"}
+                      id={"value4"}
+                      placeholder={"Value..."}
+                    />
+                  </div>
+                </div>
                 <div className="mb-3">
-                  <TextArea
-                    label={"Description"}
+                  <TextInput
+                    label={"Display Lookup"}
                     type={"text"}
                     className={"form-control"}
-                    id={"description"}
-                    placeholder={"Description..."}
-                    rows={3}
+                    id={"displayLookup"}
+                    placeholder={"Display Lookup..."}
                   />
-                </div>
-                <div className="row">
-                  <div className="col-12 col-lg-6 mb-3">
-                    <TextInput
-                      label={"Prefix"}
-                      type={"text"}
-                      className={"form-control"}
-                      id={"prefix"}
-                      placeholder={"Prefix..."}
-                    />
-                  </div>
-                  <div className="col-12 col-lg-6 mb-3">
-                    <TextInput
-                      label={"Sufix"}
-                      type={"text"}
-                      className={"form-control"}
-                      id={"sufix"}
-                      placeholder={"Sufix..."}
-                    />
-                  </div>
-                  <div className="col-12 col-lg-6 mb-3">
-                    <TextInput
-                      label={"Length of Number"}
-                      type={"text"}
-                      className={"form-control"}
-                      id={"lengthOfNumber"}
-                      placeholder={"Length of Number..."}
-                    />
-                  </div>
-                  <div className="col-12 col-lg-6 mb-3">
-                    <TextInput
-                      label={"Reset By"}
-                      type={"text"}
-                      className={"form-control"}
-                      id={"resetBy"}
-                      placeholder={"Reset By..."}
-                    />
-                  </div>
                 </div>
               </div>
               <div className="modal-footer">
@@ -352,16 +337,16 @@ export default function DocumentNumbering() {
         {/* MODAL Delete */}
         <div
           className="modal fade"
-          id="deleteData"
+          id="deleteLookupCode"
           tabIndex={-1}
-          aria-labelledby="deleteDataLabel"
+          aria-labelledby="deleteLookupCodeLabel"
           aria-hidden="true"
         >
           <div className="modal-dialog modal-dialog-centered">
             <div className="modal-content">
               <div className="modal-header">
-                <h5 className="modal-title" id="deleteDataLabel">
-                  Delete Data
+                <h5 className="modal-title" id="deleteLookupCodeLabel">
+                  Delete Lookup Code
                 </h5>
                 <button
                   type="button"

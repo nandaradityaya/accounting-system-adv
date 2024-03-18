@@ -9,22 +9,13 @@ function Sidebar() {
     <>
       <div className="sidebar-wrapper" data-simplebar="true">
         <div className="sidebar-header">
-          {/* <div>
-					<img src="assets/images/logo-icon.png" class="logo-icon" alt="logo icon">
-				</div> */}
-          <div style={{ marginLeft: 40 }}>
-            <a
-              href="dashboard.html"
-              className="logo-text"
-              style={{ fontFamily: '"Segoe UI Black"' }}
-            >
-              <span style={{ fontSize: "larger", fontStyle: "italic" }}>
-                DCT
-              </span>
-              <span style={{ fontSize: 15, textDecoration: "overline" }}>
-                WEB
-              </span>
-            </a>
+          <div className="d-flex ms-2">
+            <div>
+              <img src="/logo.png" alt="logo icon" width={28} height={28} />
+            </div>
+            <div>
+              <h6 className="text-white mt-1 ms-3">General Ledger</h6>
+            </div>
           </div>
           <div className="toggle-icon ms-auto">
             <i className="bx bx-first-page" />
@@ -57,10 +48,10 @@ function Sidebar() {
               </li>
               <li>
                 {" "}
-                <a href="index3.html">
+                <Link type="button" to="/master/period">
                   <i className="bx bx-right-arrow-alt" />
-                  eCommerce
-                </a>
+                  Period
+                </Link>
               </li>
               <li>
                 {" "}

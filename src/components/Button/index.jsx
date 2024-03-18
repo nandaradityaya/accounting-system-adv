@@ -14,7 +14,7 @@ function CButton({
   return (
     <button
       type="button"
-      className={className}
+      className={`radius-6 ${className}`}
       onClick={action}
       disabled={disabled}
       data-bs-toggle={modal}
