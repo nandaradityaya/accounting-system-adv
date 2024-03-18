@@ -10,7 +10,7 @@ import { useState } from "react";
 import SelectTwo from "../../../components/Select2";
 import BadgeStatus from "../../../components/Badge";
 
-export default function Period() {
+export default function Account() {
   const [filterText, setFilterText] = useState("");
   const columns = [
     {
@@ -19,33 +19,18 @@ export default function Period() {
       sortable: true,
     },
     {
-      name: "Company",
-      selector: (row) => row.company,
+      name: "No. Account",
+      selector: (row) => row.noAccount,
       sortable: true,
     },
     {
-      name: "Fiskal Year",
-      selector: (row) => row.fiskalYear,
+      name: "Description",
+      selector: (row) => row.description,
       sortable: true,
     },
     {
-      name: "Period",
-      selector: (row) => row.period,
-      sortable: true,
-    },
-    {
-      name: "No. Period",
-      selector: (row) => row.noPeriod,
-      sortable: true,
-    },
-    {
-      name: "Start Date",
-      selector: (row) => row.startDate,
-      sortable: true,
-    },
-    {
-      name: "End Date",
-      selector: (row) => row.endDate,
+      name: "Account Type",
+      selector: (row) => row.accountType,
       sortable: true,
     },
     {
@@ -53,12 +38,6 @@ export default function Period() {
       selector: (row) => row.status,
       sortable: true,
       cell: (row) => <BadgeStatus status={row.status} />,
-    },
-    {
-      name: "Fiskal Status",
-      selector: (row) => row.fiskalStatus,
-      sortable: true,
-      cell: (row) => <BadgeStatus status={row.fiskalStatus} />,
     },
     {
       name: "Action",
@@ -79,14 +58,10 @@ export default function Period() {
     {
       id: 1,
       no: 1,
-      company: "PT. Advantage SCM",
-      fiskalYear: "2021",
-      period: "Maret",
-      noPeriod: "12",
-      startDate: "12",
-      endDate: "12",
-      status: "Open",
-      fiskalStatus: "Active",
+      noAccount: "111000",
+      description: "BCA 397 301 1371 - GIRO",
+      accountType: "ASSET",
+      status: "Active",
     },
   ];
 
@@ -97,66 +72,75 @@ export default function Period() {
 
   const filteredItems = data.filter(
     (item) =>
-      item.company.toLowerCase().includes(filterText.toLowerCase()) ||
-      item.fiskalYear.toLowerCase().includes(filterText.toLowerCase()) ||
-      item.period.toLowerCase().includes(filterText.toLowerCase()) ||
-      item.noPeriod.toLowerCase().includes(filterText.toLowerCase()) ||
-      item.startDate.toLowerCase().includes(filterText.toLowerCase()) ||
-      item.endDate.toLowerCase().includes(filterText.toLowerCase()) ||
-      item.status.toLowerCase().includes(filterText.toLowerCase()) ||
-      item.fiskalStatus.toLowerCase().includes(filterText.toLowerCase())
+      item.noAccount.toLowerCase().includes(filterText.toLowerCase()) ||
+      item.description.toLowerCase().includes(filterText.toLowerCase()) ||
+      item.accountType.toLowerCase().includes(filterText.toLowerCase()) ||
+      item.status.toLowerCase().includes(filterText.toLowerCase())
   );
 
-  const optionPeriod = [
-    { value: "January", label: "January" },
-    { value: "February", label: "February" },
-    { value: "March", label: "March" },
-    { value: "April", label: "April" },
-    { value: "May", label: "May" },
-    { value: "June", label: "June" },
-    { value: "July", label: "July" },
-    { value: "August", label: "August" },
-    { value: "September", label: "September" },
-    { value: "October", label: "October" },
-    { value: "November", label: "November" },
-    { value: "December", label: "December" },
+  const optionAccountType = [
+    { value: "Asset", label: "Asset" },
+    { value: "Kewajiban", label: "Kewajiban" },
+    { value: "Biaya", label: "Biaya" },
+    { value: "Pendapatan", label: "Pendapatan" },
+    { value: "Ekuitas", label: "Ekuitas" },
+    { value: "Others", label: "Others" },
+    { value: "LabaBerjalan", label: "Laba Berjalan" },
+    { value: "LabaDitahan", label: "Laba Ditahan" },
   ];
 
-  const [selectedPeriod, setselectedPeriod] = useState(null);
+  const [selectedAccountType, setselectedAccountType] = useState(null);
 
-  const handleChange = (selectedPeriod) => {
-    setselectedPeriod(selectedPeriod);
-    console.log(`Option selected:`, selectedPeriod);
+  const handleChangeAccountType = (selectedAccountType) => {
+    setselectedAccountType(selectedAccountType);
+    console.log(`Option selected:`, selectedAccountType);
   };
 
-  const optionStatus = [
-    { value: "open", label: "Open" },
-    { value: "closed", label: "Closed" },
+  const optionTransactionType = [
+    { value: "Debet", label: "Debet" },
+    { value: "Credit", label: "Credit" },
   ];
 
-  const [selectedStatus, setselectedStatus] = useState(null);
+  const [selectedTransactionType, setselectedTransactionType] = useState(null);
 
-  const handleChangeStatus = (selectedStatus) => {
-    setselectedStatus(selectedStatus);
-    console.log(`Option selected:`, selectedStatus);
+  const handleChangeTransactionType = (selectedTransactionType) => {
+    setselectedTransactionType(selectedTransactionType);
+    console.log(`Option selected:`, selectedTransactionType);
+  };
+
+  const optionGroupConsole = [
+    { value: "g0048", label: "G0048 • Pajak Penghasilan" },
+    { value: "g0028", label: "G0028 • Hutang Jangka Panjang Lainnya" },
+    { value: "g0001", label: "G0001 • Kas dan Setara Kas" },
+    { value: "g0002", label: "G0002 • Piutang - Netto" },
+  ];
+
+  const [selectedGroupConsole, setselectedGroupConsole] = useState(null);
+
+  const handleChangeGroupConsole = (selectedGroupConsole) => {
+    setselectedGroupConsole(selectedGroupConsole);
+    console.log(`Option selected:`, selectedGroupConsole);
   };
   return (
     <>
       <div className="page-wrapper">
         <div className="page-content">
-          <CBreadcrumb textFirst={"Master"} textSecond={"Period"}></CBreadcrumb>
+          <CBreadcrumb
+            textFirst={"Master"}
+            textSecond={"Account"}
+          ></CBreadcrumb>
 
           <CCard>
             <div className="card-body">
-              <div className="d-flex align-items-center mb-4">
+              <div className="d-flex align-items-center">
                 <div>
-                  <h5 className="font-weight-bold mb-0">List of Period</h5>
+                  <h5 className="font-weight-bold mb-0">List of Account</h5>
                 </div>
                 <div className="ms-auto mt-2">
                   <CButton
                     className={"btn btn-primary d-flex align-items-center"}
                     modal={"modal"}
-                    modalTarget={"#addNewPeriod"}
+                    modalTarget={"#addNewAccount"}
                   >
                     <i className="bx bx-plus"></i>Add New
                   </CButton>
@@ -165,10 +149,11 @@ export default function Period() {
               <div className="row">
                 <div className="col-12 col-lg-4">
                   <TextInput
-                    label={"Search"}
+                    // label={"Search"}
                     type={"text"}
                     className={"form-control mb-3"}
                     onChange={handleFilter}
+                    placeholder={"Search Anything..."}
                   />
                 </div>
               </div>
@@ -184,19 +169,19 @@ export default function Period() {
           </CCard>
         </div>
 
-        {/* MODAL ADD NEW PERIOD */}
+        {/* MODAL ADD NEW Account */}
         <div
           className="modal fade"
-          id="addNewPeriod"
+          id="addNewAccount"
           tabIndex={-1}
-          aria-labelledby="addNewPeriodLabel"
+          aria-labelledby="addNewAccountLabel"
           aria-hidden="true"
         >
           <div className="modal-dialog modal-lg modal-dialog-centered">
             <div className="modal-content">
               <div className="modal-header">
-                <h5 className="modal-title" id="addNewPeriodLabel">
-                  Add New Period
+                <h5 className="modal-title" id="addNewAccountLabel">
+                  Add New Account
                 </h5>
                 <button
                   type="button"
@@ -208,68 +193,76 @@ export default function Period() {
               <div className="modal-body">
                 <div className="mb-3">
                   <TextInput
-                    label={"Company"}
-                    type={"text"}
+                    label={"No. Account"}
+                    type={"number"}
                     className={"form-control"}
-                    id={"company"}
-                    placeholder={"Company..."}
+                    id={"noAccount"}
+                    placeholder={"No. Account..."}
                   />
                 </div>
                 <div className="mb-3">
                   <TextInput
-                    label={"Fiskal Year"}
+                    label={"Description"}
                     type={"text"}
                     className={"form-control"}
-                    id={"fiskalYear"}
-                    placeholder={"Fiskal Year..."}
+                    id={"description"}
+                    placeholder={"Description..."}
                   />
                 </div>
                 <div className="row">
                   <div className="col-12 col-lg-6 mb-3">
                     <SelectTwo
-                      label={"Period"}
-                      value={selectedPeriod}
-                      onChange={handleChange}
-                      options={optionPeriod}
+                      label={"Account Type"}
+                      value={selectedAccountType}
+                      onChange={handleChangeAccountType}
+                      options={optionAccountType}
                       isClearable={true}
                     />
                   </div>
                   <div className="col-12 col-lg-6 mb-3">
-                    <TextInput
-                      label={"No. Period"}
-                      type={"number"}
-                      className={"form-control"}
-                      id={"noPeriod"}
-                      placeholder={"No. Period..."}
-                    />
-                  </div>
-                  <div className="col-12 col-lg-6 mb-3">
-                    <TextInput
-                      label={"Start Date"}
-                      type={"date"}
-                      className={"form-control"}
-                      id={"startDate"}
-                      placeholder={"mm/dd/yyyy"}
-                    />
-                  </div>
-                  <div className="col-12 col-lg-6 mb-3">
-                    <TextInput
-                      label={"End Date"}
-                      type={"date"}
-                      className={"form-control"}
-                      id={"endDate"}
-                      placeholder={"mm/dd/yyyy"}
+                    <SelectTwo
+                      label={"Transaction Type"}
+                      value={selectedTransactionType}
+                      onChange={handleChangeTransactionType}
+                      options={optionTransactionType}
+                      isClearable={true}
                     />
                   </div>
                 </div>
                 <div className="mb-3">
                   <SelectTwo
                     label={"Status"}
-                    value={selectedStatus}
-                    onChange={handleChangeStatus}
-                    options={optionStatus}
+                    value={selectedGroupConsole}
+                    onChange={handleChangeGroupConsole}
+                    options={optionGroupConsole}
                     isClearable={true}
                   />
+                </div>
+                <div className="row">
+                  <div className="col-12 col-lg-4 mb-3">
+                    <label className="form-label">Consolidation</label>
+                    <select className="form-select mb-3" aria-label="Default">
+                      <option selected="">Select...</option>
+                      <option value="yes">Yes</option>
+                      <option value="no">No</option>
+                    </select>
+                  </div>
+                  <div className="col-12 col-lg-4 mb-3">
+                    <label className="form-label">Default Cost Center</label>
+                    <select className="form-select mb-3" aria-label="Default">
+                      <option selected>Select...</option>
+                      <option value="yes">Yes</option>
+                      <option value="no">No</option>
+                    </select>
+                  </div>
+                  <div className="col-12 col-lg-4 mb-3">
+                    <label className="form-label">Status</label>
+                    <select className="form-select mb-3" aria-label="Default">
+                      <option selected>Select...</option>
+                      <option value="active">Active</option>
+                      <option value="inactive">Inactive</option>
+                    </select>
+                  </div>
                 </div>
               </div>
               <div className="modal-footer">
@@ -313,68 +306,76 @@ export default function Period() {
               <div className="modal-body">
                 <div className="mb-3">
                   <TextInput
-                    label={"Company"}
-                    type={"text"}
+                    label={"No. Account"}
+                    type={"number"}
                     className={"form-control"}
-                    id={"company"}
-                    placeholder={"Company..."}
+                    id={"noAccount"}
+                    placeholder={"No. Account..."}
                   />
                 </div>
                 <div className="mb-3">
                   <TextInput
-                    label={"Fiskal Year"}
+                    label={"Description"}
                     type={"text"}
                     className={"form-control"}
-                    id={"fiskalYear"}
-                    placeholder={"Fiskal Year..."}
+                    id={"description"}
+                    placeholder={"Description..."}
                   />
                 </div>
                 <div className="row">
                   <div className="col-12 col-lg-6 mb-3">
                     <SelectTwo
-                      label={"Period"}
-                      value={selectedPeriod}
-                      onChange={handleChange}
-                      options={optionPeriod}
+                      label={"Account Type"}
+                      value={selectedAccountType}
+                      onChange={handleChangeAccountType}
+                      options={optionAccountType}
                       isClearable={true}
                     />
                   </div>
                   <div className="col-12 col-lg-6 mb-3">
-                    <TextInput
-                      label={"No. Period"}
-                      type={"number"}
-                      className={"form-control"}
-                      id={"noPeriod"}
-                      placeholder={"No. Period..."}
-                    />
-                  </div>
-                  <div className="col-12 col-lg-6 mb-3">
-                    <TextInput
-                      label={"Start Date"}
-                      type={"date"}
-                      className={"form-control"}
-                      id={"startDate"}
-                      placeholder={"mm/dd/yyyy"}
-                    />
-                  </div>
-                  <div className="col-12 col-lg-6 mb-3">
-                    <TextInput
-                      label={"End Date"}
-                      type={"date"}
-                      className={"form-control"}
-                      id={"endDate"}
-                      placeholder={"mm/dd/yyyy"}
+                    <SelectTwo
+                      label={"Transaction Type"}
+                      value={selectedTransactionType}
+                      onChange={handleChangeTransactionType}
+                      options={optionTransactionType}
+                      isClearable={true}
                     />
                   </div>
                 </div>
                 <div className="mb-3">
                   <SelectTwo
                     label={"Status"}
-                    value={selectedStatus}
-                    onChange={handleChangeStatus}
-                    options={optionStatus}
+                    value={selectedGroupConsole}
+                    onChange={handleChangeGroupConsole}
+                    options={optionGroupConsole}
                     isClearable={true}
                   />
+                </div>
+                <div className="row">
+                  <div className="col-12 col-lg-4 mb-3">
+                    <label className="form-label">Consolidation</label>
+                    <select className="form-select mb-3" aria-label="Default">
+                      <option selected="">Select...</option>
+                      <option value="yes">Yes</option>
+                      <option value="no">No</option>
+                    </select>
+                  </div>
+                  <div className="col-12 col-lg-4 mb-3">
+                    <label className="form-label">Default Cost Center</label>
+                    <select className="form-select mb-3" aria-label="Default">
+                      <option selected>Select...</option>
+                      <option value="yes">Yes</option>
+                      <option value="no">No</option>
+                    </select>
+                  </div>
+                  <div className="col-12 col-lg-4 mb-3">
+                    <label className="form-label">Status</label>
+                    <select className="form-select mb-3" aria-label="Default">
+                      <option selected>Select...</option>
+                      <option value="active">Active</option>
+                      <option value="inactive">Inactive</option>
+                    </select>
+                  </div>
                 </div>
               </div>
               <div className="modal-footer">

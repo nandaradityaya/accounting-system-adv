@@ -3,6 +3,7 @@ import { Navigate, Route, Routes } from "react-router-dom";
 import { ReferenceRoute } from "./master/ReferenceRoute";
 import { DocumentNumberingRoute } from "./master/DocumentNumbering";
 import { PeriodRoute } from "./master/PeriodRoute";
+import { AccountRoute } from "./master/AccountRoute";
 
 export function AppRoutes() {
   return (
@@ -13,6 +14,7 @@ export function AppRoutes() {
         element={<DocumentNumberingRoute />}
       />
       <Route path="master/period/*" element={<PeriodRoute />} />
+      <Route path="master/account/*" element={<AccountRoute />} />
 
       <Route path="" element={<Navigate to="/" replace={true} />} />
     </Routes>

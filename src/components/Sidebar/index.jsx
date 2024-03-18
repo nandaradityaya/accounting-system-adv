@@ -55,10 +55,10 @@ function Sidebar() {
               </li>
               <li>
                 {" "}
-                <a href="index4.html">
+                <Link type="button" to="/master/account">
                   <i className="bx bx-right-arrow-alt" />
-                  Periode
-                </a>
+                  Account
+                </Link>
               </li>
               <li>
                 {" "}

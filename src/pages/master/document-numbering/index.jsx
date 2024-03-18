@@ -257,7 +257,7 @@ export default function DocumentNumbering() {
             <div className="modal-content">
               <div className="modal-header">
                 <h5 className="modal-title" id="editDocumentLabel">
-                  Edit Lookup Code
+                  Edit Document
                 </h5>
                 <button
                   type="button"
