@@ -7,7 +7,7 @@ export function InputJournalRoute() {
   return (
     <Routes>
       <Route path="/" element={<InputJurnal />} />
-      <Route path="/:jurnalId" element={<InputJournalDetail />} />
+      <Route path="/:journalId" element={<InputJournalDetail />} />
     </Routes>
   );
 }

@@ -91,6 +91,20 @@ function Sidebar() {
                   Input Journal
                 </Link>
               </li>
+              <li>
+                {" "}
+                <Link type="button" to="/transaction/input-jurnal-audit">
+                  <i className="bx bx-right-arrow-alt" />
+                  Input Journal Audit
+                </Link>
+              </li>
+              <li>
+                {" "}
+                <Link type="button" to="/transaction/import-journal">
+                  <i className="bx bx-right-arrow-alt" />
+                  Import Journal
+                </Link>
+              </li>
             </ul>
           </li>
         </ul>

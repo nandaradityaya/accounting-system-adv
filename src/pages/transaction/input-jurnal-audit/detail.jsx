@@ -10,7 +10,7 @@ import { useState } from "react";
 import CDataTable from "../../../components/DataTable";
 import SelectTwo from "../../../components/Select2";
 
-export default function InputJournalDetail() {
+export default function InputJournalDetailAudit() {
   const [filterText, setFilterText] = useState("");
   const columns = [
     {
@@ -44,11 +44,6 @@ export default function InputJournalDetail() {
       sortable: true,
     },
     {
-      name: "No. Document",
-      selector: (row) => row.noDocument,
-      sortable: true,
-    },
-    {
       name: "Action",
       cell: () => (
         <div className="d-flex order-actions">
@@ -71,7 +66,6 @@ export default function InputJournalDetail() {
       journalDescription: "REFILL PETTY CASH FINANCE 01-30 DESEMBER 2022",
       debet: "0.00",
       credit: "3.000.000.00",
-      noDocument: "001/01/2023/JAKCI/FI/OT",
     },
   ];
 
@@ -88,13 +82,12 @@ export default function InputJournalDetail() {
         .toLowerCase()
         .includes(filterText.toLowerCase()) ||
       item.debet.toLowerCase().includes(filterText.toLowerCase()) ||
-      item.credit.toLowerCase().includes(filterText.toLowerCase()) ||
-      item.noDocument.toLowerCase().includes(filterText.toLowerCase())
+      item.credit.toLowerCase().includes(filterText.toLowerCase())
   );
 
-  let { journalId } = useParams();
+  let { journalAuditId } = useParams();
   console.log("params >>");
-  console.log(journalId);
+  console.log(journalAuditId);
 
   const optionAccount = [
     { value: "11100", label: "11100 • PETTY CASH" },
@@ -169,16 +162,18 @@ export default function InputJournalDetail() {
         <div className="page-content">
           <CBreadcrumb
             textFirst={"Master"}
-            textSecond={"Input Journal"}
-            textThird={"Detail Journal"}
-            urlSecond={"/transaction/input-jurnal"}
+            textSecond={"Input Journal Audit"}
+            textThird={"Detail Journal Audit"}
+            urlSecond={"/transaction/input-jurnal-audit"}
           ></CBreadcrumb>
 
           <CCard>
             <div className="card-body">
               <div className="d-flex align-items-center mb-2">
                 <div>
-                  <h5 className="font-weight-bold mb-2">Detail Journal</h5>
+                  <h5 className="font-weight-bold mb-2">
+                    Detail Journal Audit
+                  </h5>
                   <p>JNH/11/23010001</p>
                 </div>
                 <div className="ms-auto mt-2">
@@ -268,7 +263,7 @@ export default function InputJournalDetail() {
                       placeholder={"Business Unit..."}
                     />
                   </div>
-                  <div className="col-12 col-lg-6 mb-3">
+                  <div className="col-12 col-lg-4 mb-3">
                     <SelectTwo
                       label={"Cost Center"}
                       value={selectedCostCenter}
@@ -278,7 +273,7 @@ export default function InputJournalDetail() {
                       placeholder={"Cost Center..."}
                     />
                   </div>
-                  <div className="col-12 col-lg-6 mb-3">
+                  <div className="col-12 col-lg-4 mb-3">
                     <SelectTwo
                       label={"Branch"}
                       value={selectedBranch}
@@ -288,7 +283,7 @@ export default function InputJournalDetail() {
                       placeholder={"Branch..."}
                     />
                   </div>
-                  <div className="col-12 col-lg-6 mb-3">
+                  <div className="col-12 col-lg-4 mb-3">
                     <SelectTwo
                       label={"PIC"}
                       value={selectedPIC}
@@ -296,15 +291,6 @@ export default function InputJournalDetail() {
                       options={optionPIC}
                       isClearable={true}
                       placeholder={"PIC..."}
-                    />
-                  </div>
-                  <div className="col-12 col-lg-6 mb-3">
-                    <TextInput
-                      label={"No. Document"}
-                      type={"text"}
-                      className={"form-control"}
-                      id={"noDocument"}
-                      placeholder={"No. Document..."}
                     />
                   </div>
                   <div className="col-12 col-lg-12 mb-3">
@@ -394,7 +380,7 @@ export default function InputJournalDetail() {
                       placeholder={"Business Unit..."}
                     />
                   </div>
-                  <div className="col-12 col-lg-6 mb-3">
+                  <div className="col-12 col-lg-4 mb-3">
                     <SelectTwo
                       label={"Cost Center"}
                       value={selectedCostCenter}
@@ -404,7 +390,7 @@ export default function InputJournalDetail() {
                       placeholder={"Cost Center..."}
                     />
                   </div>
-                  <div className="col-12 col-lg-6 mb-3">
+                  <div className="col-12 col-lg-4 mb-3">
                     <SelectTwo
                       label={"Branch"}
                       value={selectedBranch}
@@ -414,7 +400,7 @@ export default function InputJournalDetail() {
                       placeholder={"Branch..."}
                     />
                   </div>
-                  <div className="col-12 col-lg-6 mb-3">
+                  <div className="col-12 col-lg-4 mb-3">
                     <SelectTwo
                       label={"PIC"}
                       value={selectedPIC}
@@ -422,15 +408,6 @@ export default function InputJournalDetail() {
                       options={optionPIC}
                       isClearable={true}
                       placeholder={"PIC..."}
-                    />
-                  </div>
-                  <div className="col-12 col-lg-6 mb-3">
-                    <TextInput
-                      label={"No. Document"}
-                      type={"text"}
-                      className={"form-control"}
-                      id={"noDocument"}
-                      placeholder={"No. Document..."}
                     />
                   </div>
                   <div className="col-12 col-lg-12 mb-3">

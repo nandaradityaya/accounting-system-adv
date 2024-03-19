@@ -7,6 +7,7 @@ import { AccountRoute } from "./master/AccountRoute";
 import { ColFlexibleReportRoute } from "./master/ColFlexibleReport";
 import { FormatFlexibleReportRoute } from "./master/FormatFlexibleReport";
 import { InputJournalRoute } from "./transaction/InputJurnalRoute";
+import { InputJournalAuditRoute } from "./transaction/InputJurnalAuditRoute";
 
 export function AppRoutes() {
   return (
@@ -30,6 +31,11 @@ export function AppRoutes() {
       <Route
         path="transaction/input-jurnal/*"
         element={<InputJournalRoute />}
+      />
+
+      <Route
+        path="transaction/input-jurnal-audit/*"
+        element={<InputJournalAuditRoute />}
       />
 
       <Route path="" element={<Navigate to="/" replace={true} />} />

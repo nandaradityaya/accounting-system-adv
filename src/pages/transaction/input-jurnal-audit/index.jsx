@@ -12,7 +12,7 @@ import CDataTable from "../../../components/DataTable";
 import BadgeStatus from "../../../components/Badge";
 import SelectTwo from "../../../components/Select2";
 
-export default function InputJurnal() {
+export default function InputJurnalAudit() {
   const navigate = useNavigate();
   const [filterText, setFilterText] = useState("");
   const columns = [
@@ -76,7 +76,7 @@ export default function InputJurnal() {
       name: "View Detail",
       cell: () => (
         <CButtonViewDetail
-          action={() => navigate("/transaction/input-jurnal/9090")}
+          action={() => navigate("/transaction/input-jurnal-audit/8736")}
         />
       ),
       sortable: false,
@@ -112,7 +112,7 @@ export default function InputJurnal() {
       credit: "245.877.234",
       noRef: "Import",
       reverseDate: "",
-      status: "Posting",
+      status: "Status",
     },
   ];
 
@@ -164,20 +164,20 @@ export default function InputJurnal() {
         <div className="page-content">
           <CBreadcrumb
             textFirst={"Master"}
-            textSecond={"Input Journal"}
+            textSecond={"Input Journal Audit"}
           ></CBreadcrumb>
 
           <CCard>
             <div className="card-body">
               <div className="d-flex align-items-center mb-4">
                 <div>
-                  <h5 className="font-weight-bold mb-0">List Journal</h5>
+                  <h5 className="font-weight-bold mb-0">List Journal Audit</h5>
                 </div>
                 <div className="ms-auto mt-2">
                   <CButton
                     className={"btn btn-primary d-flex align-items-center"}
                     modal={"modal"}
-                    modalTarget={"#addNewJurnal"}
+                    modalTarget={"#addNewJournalAudit"}
                   >
                     <i className="bx bx-plus"></i>Add New
                   </CButton>
@@ -195,16 +195,16 @@ export default function InputJurnal() {
         {/* MODAL ADD NEW */}
         <div
           className="modal fade"
-          id="addNewJurnal"
+          id="addNewJournalAudit"
           tabIndex={-1}
-          aria-labelledby="addNewJurnalLabel"
+          aria-labelledby="addNewJournalAuditLabel"
           aria-hidden="true"
         >
           <div className="modal-dialog modal-lg modal-dialog-centered">
             <div className="modal-content">
               <div className="modal-header">
-                <h5 className="modal-title" id="addNewJurnalLabel">
-                  Add New Jurnal
+                <h5 className="modal-title" id="addNewJournalAuditLabel">
+                  Add New Jurnal Audit
                 </h5>
                 <button
                   type="button"
@@ -258,24 +258,6 @@ export default function InputJurnal() {
                       onChange={handleChangePeriod}
                       options={optionPeriod}
                       isClearable={true}
-                    />
-                  </div>
-                  <div className="col-12 col-lg-12 mb-3">
-                    <TextInput
-                      label={"Reference"}
-                      type={"text"}
-                      className={"form-control"}
-                      id={"reference"}
-                      placeholder={"Reference..."}
-                    />
-                  </div>
-                  <div className="col-12 col-lg-12 mb-3">
-                    <TextInput
-                      label={"Reverse Date"}
-                      type={"date"}
-                      className={"form-control"}
-                      id={"reverseDate"}
-                      placeholder={"Reverse Date..."}
                     />
                   </div>
                 </div>
