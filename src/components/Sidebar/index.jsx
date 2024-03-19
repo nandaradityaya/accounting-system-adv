@@ -1,7 +1,7 @@
 // import React from "react";
 // import { useNavigate } from "react-router-dom";
-
 import { Link } from "react-router-dom";
+import { GrTransaction } from "react-icons/gr";
 
 function Sidebar() {
   // const navigate = useNavigate();
@@ -25,7 +25,7 @@ function Sidebar() {
         <ul className="metismenu" id="menu">
           <li className="menu-label">Menu</li>
           <li>
-            <a href="javascript:;" className="has-arrow">
+            <a href="#" className="has-arrow">
               <div className="parent-icon">
                 <i className="bx bx-home" />
               </div>
@@ -74,12 +74,22 @@ function Sidebar() {
                   Format Flexible Report
                 </Link>
               </li>
+            </ul>
+          </li>
+          <li>
+            <a href="#" className="has-arrow">
+              <div className="parent-icon">
+                <GrTransaction />
+              </div>
+              <div className="menu-title">Transaction</div>
+            </a>
+            <ul>
               <li>
                 {" "}
-                <a href="index5.html">
+                <Link type="button" to="/transaction/input-jurnal">
                   <i className="bx bx-right-arrow-alt" />
-                  Ffdsf
-                </a>
+                  Input Journal
+                </Link>
               </li>
             </ul>
           </li>

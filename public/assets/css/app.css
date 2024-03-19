@@ -3550,6 +3550,10 @@ input::placeholder {
   width: 450px;
 }
 
+.width-250 {
+  width: 250px;
+}
+
 /* ------------ */
 /* img {
   max-width: 180px;
