@@ -4,6 +4,8 @@ import { ReferenceRoute } from "./master/ReferenceRoute";
 import { DocumentNumberingRoute } from "./master/DocumentNumbering";
 import { PeriodRoute } from "./master/PeriodRoute";
 import { AccountRoute } from "./master/AccountRoute";
+import { ColFlexibleReportRoute } from "./master/ColFlexibleReport";
+import { FormatFlexibleReportRoute } from "./master/FormatFlexibleReport";
 
 export function AppRoutes() {
   return (
@@ -15,6 +17,14 @@ export function AppRoutes() {
       />
       <Route path="master/period/*" element={<PeriodRoute />} />
       <Route path="master/account/*" element={<AccountRoute />} />
+      <Route
+        path="master/col-flexible-report/*"
+        element={<ColFlexibleReportRoute />}
+      />
+      <Route
+        path="master/format-flexible-report/*"
+        element={<FormatFlexibleReportRoute />}
+      />
 
       <Route path="" element={<Navigate to="/" replace={true} />} />
     </Routes>

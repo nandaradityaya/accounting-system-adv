@@ -242,7 +242,7 @@ export default function Account() {
                   <div className="col-12 col-lg-4 mb-3">
                     <label className="form-label">Consolidation</label>
                     <select className="form-select mb-3" aria-label="Default">
-                      <option selected="">Select...</option>
+                      <option selected>Select...</option>
                       <option value="yes">Yes</option>
                       <option value="no">No</option>
                     </select>
@@ -355,7 +355,7 @@ export default function Account() {
                   <div className="col-12 col-lg-4 mb-3">
                     <label className="form-label">Consolidation</label>
                     <select className="form-select mb-3" aria-label="Default">
-                      <option selected="">Select...</option>
+                      <option selected>Select...</option>
                       <option value="yes">Yes</option>
                       <option value="no">No</option>
                     </select>

@@ -1,7 +1,14 @@
 /* eslint-disable react/prop-types */
 import Select from "react-select";
 
-function SelectTwo({ label, value, onChange, options, isClearable }) {
+function SelectTwo({
+  label,
+  value,
+  onChange,
+  options,
+  isClearable,
+  placeholder,
+}) {
   return (
     <>
       <label className="form-label">{label}</label>
@@ -10,6 +17,7 @@ function SelectTwo({ label, value, onChange, options, isClearable }) {
         onChange={onChange}
         options={options}
         isClearable={isClearable}
+        placeholder={placeholder}
       />
     </>
   );

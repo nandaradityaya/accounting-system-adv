@@ -111,7 +111,7 @@ function Header() {
               <img
                 src="../assets/images/avatars/nanda.jpg"
                 className="user-img"
-                alt="user avatar"
+                alt="user"
               />
               <div className="user-info ps-3">
                 <p className="user-name mb-0">Nanda Raditya</p>

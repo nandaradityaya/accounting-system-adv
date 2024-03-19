@@ -62,23 +62,23 @@ function Sidebar() {
               </li>
               <li>
                 {" "}
-                <a href="index5.html">
-                  <i className="bx bx-right-arrow-alt" />
-                  Account
-                </a>
-              </li>
-              <li>
-                {" "}
-                <a href="index5.html">
+                <Link type="button" to="/master/col-flexible-report">
                   <i className="bx bx-right-arrow-alt" />
                   Col. Flexible Report
-                </a>
+                </Link>
+              </li>
+              <li>
+                {" "}
+                <Link type="button" to="/master/format-flexible-report">
+                  <i className="bx bx-right-arrow-alt" />
+                  Format Flexible Report
+                </Link>
               </li>
               <li>
                 {" "}
                 <a href="index5.html">
                   <i className="bx bx-right-arrow-alt" />
-                  Format Flexible Report
+                  Ffdsf
                 </a>
               </li>
             </ul>
