@@ -45,7 +45,7 @@ export default function FormatFlexibleReport() {
       name: "View Detail",
       cell: () => (
         <CButtonViewDetail
-          action={() => navigate("/master/col-flexible-report/6565")}
+          action={() => navigate("/master/format-flexible-report/8080")}
         />
       ),
       sortable: false,
@@ -181,14 +181,6 @@ export default function FormatFlexibleReport() {
                 </div>
                 <div className="row">
                   <div className="col-12 col-lg-6 mb-3">
-                    <label className="form-label">Report Type</label>
-                    <select className="form-select mb-3" aria-label="Default">
-                      <option defaultValue>Select...</option>
-                      <option value="normal">Normal</option>
-                      <option value="costcenter">Cost Center</option>
-                    </select>
-                  </div>
-                  <div className="col-12 col-lg-6 mb-3">
                     <TextInput
                       label={"ID Report"}
                       type={"text"}
@@ -198,6 +190,15 @@ export default function FormatFlexibleReport() {
                     />
                   </div>
                   <div className="col-12 col-lg-6 mb-3">
+                    <label className="form-label">Type</label>
+                    <select className="form-select" aria-label="Default">
+                      <option defaultValue>Select...</option>
+                      <option value="normal">Normal</option>
+                      <option value="costcenter">Cost Center</option>
+                    </select>
+                  </div>
+
+                  <div className="col-12 col-lg-12 mb-3">
                     <TextInput
                       label={"Title Report"}
                       type={"text"}
@@ -205,23 +206,6 @@ export default function FormatFlexibleReport() {
                       id={"titleReport"}
                       placeholder={"Title Report..."}
                     />
-                  </div>
-                  <div className="col-12 col-lg-6 mb-3">
-                    <TextInput
-                      label={"Total Column"}
-                      type={"number"}
-                      className={"form-control"}
-                      id={"totalColumn"}
-                      placeholder={"Total Column..."}
-                    />
-                  </div>
-                  <div className="col-12 col-lg-12 mb-3">
-                    <label className="form-label">Period</label>
-                    <select className="form-select mb-3" aria-label="Default">
-                      <option selected>Select...</option>
-                      <option value="monthly">Monthly</option>
-                      <option value="yearly">Yearly</option>
-                    </select>
                   </div>
                 </div>
               </div>
@@ -277,7 +261,7 @@ export default function FormatFlexibleReport() {
                 <div className="row">
                   <div className="col-12 col-lg-6 mb-3">
                     <label className="form-label">Report Type</label>
-                    <select className="form-select mb-3" aria-label="Default">
+                    <select className="form-select" aria-label="Default">
                       <option selected>Select...</option>
                       <option value="normal">Normal</option>
                       <option value="costcenter">Cost Center</option>
@@ -312,7 +296,7 @@ export default function FormatFlexibleReport() {
                   </div>
                   <div className="col-12 col-lg-12 mb-3">
                     <label className="form-label">Period</label>
-                    <select className="form-select mb-3" aria-label="Default">
+                    <select className="form-select" aria-label="Default">
                       <option selected>Select...</option>
                       <option value="monthly">Monthly</option>
                       <option value="yearly">Yearly</option>

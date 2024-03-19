@@ -1,5 +1,4 @@
 // import React from "react";
-import DataTable from "react-data-table-component";
 import CBreadcrumb from "../../../components/Breadcrumb";
 import CButtonDelete from "../../../components/BtnActionDelete";
 import CButtonEdit from "../../../components/BtnActionEdit";
@@ -10,6 +9,7 @@ import TextArea from "../../../components/TextArea";
 import TextInput from "../../../components/TextInput";
 import { useNavigate } from "react-router-dom";
 import { useState } from "react";
+import CDataTable from "../../../components/DataTable";
 
 export default function Reference() {
   const navigate = useNavigate();
@@ -99,24 +99,11 @@ export default function Reference() {
                   </CButton>
                 </div>
               </div>
-              <div className="row">
-                <div className="col-12 col-lg-4">
-                  <TextInput
-                    label={"Search"}
-                    type={"text"}
-                    className={"form-control mb-3"}
-                    onChange={handleFilter}
-                  />
-                </div>
-              </div>
-              <div className="table-responsive">
-                <DataTable
-                  columns={columns}
-                  data={filteredItems}
-                  pagination
-                  highlightOnHover
-                />
-              </div>
+              <CDataTable
+                onChange={handleFilter}
+                columns={columns}
+                data={filteredItems}
+              />
             </div>
           </CCard>
         </div>

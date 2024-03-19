@@ -187,7 +187,7 @@ function ColFlexibleReportDetail() {
                 <div className="row mb-3">
                   <div className="col-12 col-lg-6">
                     <label className="form-label">Type</label>
-                    <select className="form-select mb-3" aria-label="Default">
+                    <select className="form-select" aria-label="Default">
                       <option selected>Select...</option>
                       <option value="actual">Actual</option>
                       <option value="variance">Variance</option>
@@ -273,7 +273,7 @@ function ColFlexibleReportDetail() {
                 <div className="row mb-3">
                   <div className="col-12 col-lg-6">
                     <label className="form-label">Type</label>
-                    <select className="form-select mb-3" aria-label="Default">
+                    <select className="form-select" aria-label="Default">
                       <option selected>Select...</option>
                       <option value="actual">Actual</option>
                       <option value="variance">Variance</option>

@@ -5,11 +5,11 @@ import CButtonEdit from "../../../components/BtnActionEdit";
 import CButton from "../../../components/Button";
 import CCard from "../../../components/Card";
 import TextInput from "../../../components/TextInput";
-import DataTable from "react-data-table-component";
 import { useState } from "react";
 import CButtonViewDetail from "../../../components/ButtonViewDetail";
 import TextArea from "../../../components/TextArea";
 import { useNavigate } from "react-router-dom";
+import CDataTable from "../../../components/DataTable";
 
 export default function DocumentNumbering() {
   const navigate = useNavigate();
@@ -124,19 +124,11 @@ export default function DocumentNumbering() {
                 </div>
               </div>
 
-              <div className="row">
-                <div className="col-12 col-lg-4">
-                  <TextInput
-                    label={"Search"}
-                    type={"text"}
-                    className={"form-control mb-3"}
-                    onChange={handleFilter}
-                  />
-                </div>
-              </div>
-              <div className="table-responsive">
-                <DataTable columns={columns} data={filteredItems} pagination />
-              </div>
+              <CDataTable
+                onChange={handleFilter}
+                columns={columns}
+                data={filteredItems}
+              />
             </div>
           </CCard>
         </div>

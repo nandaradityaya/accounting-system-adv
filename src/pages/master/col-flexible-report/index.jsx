@@ -187,7 +187,7 @@ export default function ColFlexibleReport() {
                 <div className="row">
                   <div className="col-12 col-lg-6 mb-3">
                     <label className="form-label">Report Type</label>
-                    <select className="form-select mb-3" aria-label="Default">
+                    <select className="form-select" aria-label="Default">
                       <option selected>Select...</option>
                       <option value="normal">Normal</option>
                       <option value="costcenter">Cost Center</option>
@@ -222,7 +222,7 @@ export default function ColFlexibleReport() {
                   </div>
                   <div className="col-12 col-lg-12 mb-3">
                     <label className="form-label">Period</label>
-                    <select className="form-select mb-3" aria-label="Default">
+                    <select className="form-select" aria-label="Default">
                       <option selected>Select...</option>
                       <option value="monthly">Monthly</option>
                       <option value="yearly">Yearly</option>
@@ -282,7 +282,7 @@ export default function ColFlexibleReport() {
                 <div className="row">
                   <div className="col-12 col-lg-6 mb-3">
                     <label className="form-label">Report Type</label>
-                    <select className="form-select mb-3" aria-label="Default">
+                    <select className="form-select" aria-label="Default">
                       <option selected>Select...</option>
                       <option value="normal">Normal</option>
                       <option value="costcenter">Cost Center</option>
@@ -317,7 +317,7 @@ export default function ColFlexibleReport() {
                   </div>
                   <div className="col-12 col-lg-12 mb-3">
                     <label className="form-label">Period</label>
-                    <select className="form-select mb-3" aria-label="Default">
+                    <select className="form-select" aria-label="Default">
                       <option selected>Select...</option>
                       <option value="monthly">Monthly</option>
                       <option value="yearly">Yearly</option>

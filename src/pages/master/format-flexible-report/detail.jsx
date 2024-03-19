@@ -1,5 +1,6 @@
 // import React from 'react'
 
+import { useState } from "react";
 import { useParams } from "react-router-dom";
 import CBreadcrumb from "../../../components/Breadcrumb";
 import CButton from "../../../components/Button";
@@ -7,11 +8,12 @@ import CCard from "../../../components/Card";
 import TextInput from "../../../components/TextInput";
 import CButtonEdit from "../../../components/BtnActionEdit";
 import CButtonDelete from "../../../components/BtnActionDelete";
-import DataTable from "react-data-table-component";
-import { useState } from "react";
-import SelectTwo from "../../../components/Select2";
+import CDataTable from "../../../components/DataTable";
 
-function ColFlexibleReportDetail() {
+function FormatFlexibleReportDetail() {
+  let { formatFlexReportId } = useParams();
+  console.log("params >>");
+  console.log(formatFlexReportId);
   const [filterText, setFilterText] = useState("");
   const columns = [
     {
@@ -20,28 +22,53 @@ function ColFlexibleReportDetail() {
       sortable: true,
     },
     {
-      name: "Name",
-      selector: (row) => row.columnName,
+      name: "Group",
+      selector: (row) => row.group,
+      sortable: true,
+    },
+    {
+      name: "Line",
+      selector: (row) => row.line,
       sortable: true,
     },
     {
       name: "Type",
-      selector: (row) => row.columnType,
+      selector: (row) => row.type,
       sortable: true,
     },
     {
-      name: "Calculation Period",
-      selector: (row) => row.calculationPeriod,
+      name: "Description",
+      selector: (row) => row.description,
       sortable: true,
     },
     {
-      name: "Range 1",
-      selector: (row) => row.range1,
+      name: "Level",
+      selector: (row) => row.level,
       sortable: true,
     },
     {
-      name: "Range 2",
-      selector: (row) => row.range2,
+      name: "Space",
+      selector: (row) => row.space,
+      sortable: true,
+    },
+    {
+      name: "Balance",
+      selector: (row) => row.balance,
+      sortable: true,
+    },
+    {
+      name: "Operator",
+      selector: (row) => row.operator,
+      sortable: true,
+    },
+    {
+      name: "Variant",
+      selector: (row) => row.variant,
+      sortable: true,
+    },
+    {
+      name: "Precentage",
+      selector: (row) => row.precentage,
       sortable: true,
     },
     {
@@ -62,20 +89,16 @@ function ColFlexibleReportDetail() {
     {
       id: 1,
       no: 1,
-      columnName: "Balance",
-      columnType: "Actual",
-      calculationPeriod: "Current Month Current Year",
-      range1: "0",
-      range2: "0",
-    },
-    {
-      id: 1,
-      no: 2,
-      columnName: "Counter",
-      columnType: "Variance",
-      calculationPeriod: "Begin of Year",
-      range1: "0",
-      range2: "0",
+      group: "10",
+      line: "10",
+      type: "Header",
+      description: "Assets",
+      level: "0",
+      space: "1",
+      balance: "Credit",
+      operator: "",
+      variant: "10",
+      precentage: "Detail",
     },
   ];
 
@@ -86,34 +109,17 @@ function ColFlexibleReportDetail() {
 
   const filteredItems = data.filter(
     (item) =>
-      item.columnName.toLowerCase().includes(filterText.toLowerCase()) ||
-      item.columnType.toLowerCase().includes(filterText.toLowerCase()) ||
-      item.calculationPeriod.toLowerCase().includes(filterText.toLowerCase()) ||
-      item.range1.toLowerCase().includes(filterText.toLowerCase()) ||
-      item.range2.toLowerCase().includes(filterText.toLowerCase())
+      item.group.toLowerCase().includes(filterText.toLowerCase()) ||
+      item.line.toLowerCase().includes(filterText.toLowerCase()) ||
+      item.type.toLowerCase().includes(filterText.toLowerCase()) ||
+      item.description.toLowerCase().includes(filterText.toLowerCase()) ||
+      item.level.toLowerCase().includes(filterText.toLowerCase()) ||
+      item.space.toLowerCase().includes(filterText.toLowerCase()) ||
+      item.balance.toLowerCase().includes(filterText.toLowerCase()) ||
+      item.operator.toLowerCase().includes(filterText.toLowerCase()) ||
+      item.variant.toLowerCase().includes(filterText.toLowerCase()) ||
+      item.precentage.toLowerCase().includes(filterText.toLowerCase())
   );
-
-  const optionCalculationPeriod = [
-    { value: "1", label: "Current Month Current Year" },
-    { value: "2", label: "Begin Of Year" },
-    { value: "3", label: "Current Month Last Year" },
-    { value: "4", label: "Last Month Current Year" },
-    { value: "5", label: "Last Month Last Year" },
-    { value: "6", label: "Debit" },
-    { value: "7", label: "Credit" },
-  ];
-
-  const [selectedCalculationPeriod, setselectedCalculationPeriod] =
-    useState(null);
-
-  const handleChangeCalculationPeriod = (selectedCalculationPeriod) => {
-    setselectedCalculationPeriod(selectedCalculationPeriod);
-    console.log(`Option selected:`, selectedCalculationPeriod);
-  };
-
-  let { flexReportId } = useParams();
-  console.log("params >>");
-  console.log(flexReportId);
 
   return (
     <>
@@ -121,9 +127,9 @@ function ColFlexibleReportDetail() {
         <div className="page-content">
           <CBreadcrumb
             textFirst={"Master"}
-            textSecond={"Col. Flexible Report"}
-            textThird={"Detail Column"}
-            urlSecond={"/master/col-flexible-report"}
+            textSecond={"Format Flexible Report"}
+            textThird={"Detail Format"}
+            urlSecond={"/master/format-flexible-report"}
           ></CBreadcrumb>
 
           <CCard>
@@ -143,18 +149,11 @@ function ColFlexibleReportDetail() {
                 </div>
               </div>
 
-              <div className="row">
-                <div className="col-12 col-lg-4">
-                  <TextInput
-                    label={"Search"}
-                    type={"text"}
-                    className={"form-control mb-3"}
-                    onChange={handleFilter}
-                    placeholder={"Search Anything..."}
-                  />
-                </div>
-              </div>
-              <DataTable columns={columns} data={filteredItems} pagination />
+              <CDataTable
+                onChange={handleFilter}
+                columns={columns}
+                data={filteredItems}
+              />
             </div>
           </CCard>
         </div>
@@ -171,7 +170,7 @@ function ColFlexibleReportDetail() {
             <div className="modal-content">
               <div className="modal-header">
                 <h5 className="modal-title" id="addNewDetailLabel">
-                  Add New Detail
+                  Add New Detail Format
                 </h5>
                 <button
                   type="button"
@@ -181,52 +180,106 @@ function ColFlexibleReportDetail() {
                 />
               </div>
               <div className="modal-body">
-                <div className="mb-3">
-                  <TextInput
-                    label={"Name"}
-                    type={"text"}
-                    className={"form-control"}
-                    id={"name"}
-                    placeholder={"Name..."}
-                  />
-                </div>
                 <div className="row mb-3">
-                  <div className="col-12 col-lg-6">
+                  <div className="col-12 col-lg-4 mb-3">
+                    <TextInput
+                      label={"Group"}
+                      type={"number"}
+                      className={"form-control"}
+                      id={"group"}
+                      placeholder={"Group..."}
+                    />
+                  </div>
+                  <div className="col-12 col-lg-4 mb-3">
+                    <TextInput
+                      label={"Baris"}
+                      type={"number"}
+                      className={"form-control"}
+                      id={"baris"}
+                      placeholder={"Baris..."}
+                    />
+                  </div>
+                  <div className="col-12 col-lg-4 mb-3">
                     <label className="form-label">Type</label>
-                    <select className="form-select mb-3" aria-label="Default">
-                      <option selected>Select...</option>
-                      <option value="actual">Actual</option>
-                      <option value="variance">Variance</option>
-                      <option value="precentage">Precentage</option>
+                    <select className="form-select" aria-label="Default">
+                      <option defaultValue={"select"}>Select Type...</option>
+                      <option value="header">Header</option>
+                      <option value="line">Line</option>
+                      <option value="detail">Detail</option>
+                      <option value="total">Total</option>
                     </select>
                   </div>
-                  <div className="col-12 col-lg-6">
-                    <SelectTwo
-                      label={"Calculation Period"}
-                      value={selectedCalculationPeriod}
-                      onChange={handleChangeCalculationPeriod}
-                      options={optionCalculationPeriod}
-                      isClearable={true}
-                      placeholder={"Select..."}
-                    />
-                  </div>
-                  <div className="col-12 col-lg-6">
+                  <div className="col-12 col-lg-12 mb-3">
                     <TextInput
-                      label={"Range 1"}
+                      label={"Description"}
                       type={"text"}
                       className={"form-control"}
-                      id={"range1"}
-                      placeholder={"Range 1..."}
+                      id={"description"}
+                      placeholder={"Description..."}
                     />
                   </div>
-                  <div className="col-12 col-lg-6">
-                    <TextInput
-                      label={"Range 2"}
-                      type={"text"}
-                      className={"form-control"}
-                      id={"range2"}
-                      placeholder={"Range 2..."}
-                    />
+                  <div className="col-12 col-lg-4 mb-3">
+                    <label className="form-label">Level</label>
+                    <select className="form-select" aria-label="Default">
+                      <option defaultValue={"select"}>Select Level...</option>
+                      <option value="header">Header</option>
+                      <option value="1">1</option>
+                      <option value="2">2</option>
+                      <option value="3">3</option>
+                      <option value="4">4</option>
+                      <option value="5">5</option>
+                    </select>
+                  </div>
+                  <div className="col-12 col-lg-4 mb-3">
+                    <label className="form-label">Variant</label>
+                    <select className="form-select" aria-label="Default">
+                      <option defaultValue={"select"}>Select Variant...</option>
+                      <option value="10">10</option>
+                      <option value="11">11</option>
+                      <option value="12">12</option>
+                      <option value="13">13</option>
+                      <option value="14">14</option>
+                      <option value="15">15</option>
+                    </select>
+                  </div>
+                  <div className="col-12 col-lg-4 mb-3">
+                    <label className="form-label">Space</label>
+                    <select className="form-select" aria-label="Default">
+                      <option defaultValue={"select"}>Select Space...</option>
+                      <option value="1">1</option>
+                      <option value="2">2</option>
+                      <option value="3">3</option>
+                      <option value="4">4</option>
+                      <option value="5">5</option>
+                    </select>
+                  </div>
+                  <div className="col-12 col-lg-4 mb-3">
+                    <label className="form-label">Balance</label>
+                    <select className="form-select" aria-label="Default">
+                      <option defaultValue={"select"}>Select Balance...</option>
+                      <option value="debit">Debit</option>
+                      <option value="credit">Credit</option>
+                    </select>
+                  </div>
+                  <div className="col-12 col-lg-4 mb-3">
+                    <label className="form-label">Operator</label>
+                    <select className="form-select" aria-label="Default">
+                      <option defaultValue={"select"}>
+                        Select Operator...
+                      </option>
+                      <option value="jumlah">Jumlah</option>
+                      <option value="kurang">Kurang</option>
+                    </select>
+                  </div>
+                  <div className="col-12 col-lg-4 mb-3">
+                    <label className="form-label">Precentage</label>
+                    <select className="form-select" aria-label="Default">
+                      <option defaultValue={"select"}>
+                        Select Precentage...
+                      </option>
+                      <option value="detil">Detil</option>
+                      <option value="total">Total</option>
+                    </select>
                   </div>
                 </div>
               </div>
@@ -257,7 +310,7 @@ function ColFlexibleReportDetail() {
             <div className="modal-content">
               <div className="modal-header">
                 <h5 className="modal-title" id="editDetailLabel">
-                  Edit Lookup Code
+                  Edit Detail Format
                 </h5>
                 <button
                   type="button"
@@ -267,52 +320,106 @@ function ColFlexibleReportDetail() {
                 />
               </div>
               <div className="modal-body">
-                <div className="mb-3">
-                  <TextInput
-                    label={"Name"}
-                    type={"text"}
-                    className={"form-control"}
-                    id={"name"}
-                    placeholder={"Name..."}
-                  />
-                </div>
                 <div className="row mb-3">
-                  <div className="col-12 col-lg-6">
+                  <div className="col-12 col-lg-4 mb-3">
+                    <TextInput
+                      label={"Group"}
+                      type={"number"}
+                      className={"form-control"}
+                      id={"group"}
+                      placeholder={"Group..."}
+                    />
+                  </div>
+                  <div className="col-12 col-lg-4 mb-3">
+                    <TextInput
+                      label={"Baris"}
+                      type={"number"}
+                      className={"form-control"}
+                      id={"baris"}
+                      placeholder={"Baris..."}
+                    />
+                  </div>
+                  <div className="col-12 col-lg-4 mb-3">
                     <label className="form-label">Type</label>
-                    <select className="form-select mb-3" aria-label="Default">
-                      <option selected>Select...</option>
-                      <option value="actual">Actual</option>
-                      <option value="variance">Variance</option>
-                      <option value="precentage">Precentage</option>
+                    <select className="form-select" aria-label="Default">
+                      <option defaultValue={"select"}>Select Type...</option>
+                      <option value="header">Header</option>
+                      <option value="line">Line</option>
+                      <option value="detail">Detail</option>
+                      <option value="total">Total</option>
                     </select>
                   </div>
-                  <div className="col-12 col-lg-6">
-                    <SelectTwo
-                      label={"Calculation Period"}
-                      value={selectedCalculationPeriod}
-                      onChange={handleChangeCalculationPeriod}
-                      options={optionCalculationPeriod}
-                      isClearable={true}
-                      placeholder={"Select..."}
-                    />
-                  </div>
-                  <div className="col-12 col-lg-6">
+                  <div className="col-12 col-lg-12 mb-3">
                     <TextInput
-                      label={"Range 1"}
+                      label={"Description"}
                       type={"text"}
                       className={"form-control"}
-                      id={"range1"}
-                      placeholder={"Range 1..."}
+                      id={"description"}
+                      placeholder={"Description..."}
                     />
                   </div>
-                  <div className="col-12 col-lg-6">
-                    <TextInput
-                      label={"Range 2"}
-                      type={"text"}
-                      className={"form-control"}
-                      id={"range2"}
-                      placeholder={"Range 2..."}
-                    />
+                  <div className="col-12 col-lg-4 mb-3">
+                    <label className="form-label">Level</label>
+                    <select className="form-select" aria-label="Default">
+                      <option defaultValue={"select"}>Select Level...</option>
+                      <option value="header">Header</option>
+                      <option value="1">1</option>
+                      <option value="2">2</option>
+                      <option value="3">3</option>
+                      <option value="4">4</option>
+                      <option value="5">5</option>
+                    </select>
+                  </div>
+                  <div className="col-12 col-lg-4 mb-3">
+                    <label className="form-label">Variant</label>
+                    <select className="form-select" aria-label="Default">
+                      <option defaultValue={"select"}>Select Variant...</option>
+                      <option value="10">10</option>
+                      <option value="11">11</option>
+                      <option value="12">12</option>
+                      <option value="13">13</option>
+                      <option value="14">14</option>
+                      <option value="15">15</option>
+                    </select>
+                  </div>
+                  <div className="col-12 col-lg-4 mb-3">
+                    <label className="form-label">Space</label>
+                    <select className="form-select" aria-label="Default">
+                      <option defaultValue={"select"}>Select Space...</option>
+                      <option value="1">1</option>
+                      <option value="2">2</option>
+                      <option value="3">3</option>
+                      <option value="4">4</option>
+                      <option value="5">5</option>
+                    </select>
+                  </div>
+                  <div className="col-12 col-lg-4 mb-3">
+                    <label className="form-label">Balance</label>
+                    <select className="form-select" aria-label="Default">
+                      <option defaultValue={"select"}>Select Balance...</option>
+                      <option value="debit">Debit</option>
+                      <option value="credit">Credit</option>
+                    </select>
+                  </div>
+                  <div className="col-12 col-lg-4 mb-3">
+                    <label className="form-label">Operator</label>
+                    <select className="form-select" aria-label="Default">
+                      <option defaultValue={"select"}>
+                        Select Operator...
+                      </option>
+                      <option value="jumlah">Jumlah</option>
+                      <option value="kurang">Kurang</option>
+                    </select>
+                  </div>
+                  <div className="col-12 col-lg-4 mb-3">
+                    <label className="form-label">Precentage</label>
+                    <select className="form-select" aria-label="Default">
+                      <option defaultValue={"select"}>
+                        Select Precentage...
+                      </option>
+                      <option value="detil">Detil</option>
+                      <option value="total">Total</option>
+                    </select>
                   </div>
                 </div>
               </div>
@@ -329,7 +436,7 @@ function ColFlexibleReportDetail() {
             </div>
           </div>
         </div>
-        {/* MODAL EDIT */}
+        {/* END MODAL EDIT */}
 
         {/* MODAL Delete */}
         <div
@@ -374,4 +481,4 @@ function ColFlexibleReportDetail() {
   );
 }
 
-export default ColFlexibleReportDetail;
+export default FormatFlexibleReportDetail;

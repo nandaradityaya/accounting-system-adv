@@ -1,5 +1,4 @@
 // import React from "react";
-import DataTable from "react-data-table-component";
 import CBreadcrumb from "../../../components/Breadcrumb";
 import CButtonDelete from "../../../components/BtnActionDelete";
 import CButtonEdit from "../../../components/BtnActionEdit";
@@ -9,6 +8,7 @@ import TextInput from "../../../components/TextInput";
 import { useState } from "react";
 import SelectTwo from "../../../components/Select2";
 import BadgeStatus from "../../../components/Badge";
+import CDataTable from "../../../components/DataTable";
 
 export default function Account() {
   const [filterText, setFilterText] = useState("");
@@ -44,7 +44,7 @@ export default function Account() {
       sortable: false,
       cell: () => (
         <div className="d-flex order-actions">
-          <CButtonEdit modal={"modal"} modalTarget={"#editPeriod"} />
+          <CButtonEdit modal={"modal"} modalTarget={"#editData"} />
           <CButtonDelete modal={"modal"} modalTarget={"#deleteData"} />
         </div>
       ),
@@ -146,25 +146,11 @@ export default function Account() {
                   </CButton>
                 </div>
               </div>
-              <div className="row">
-                <div className="col-12 col-lg-4">
-                  <TextInput
-                    // label={"Search"}
-                    type={"text"}
-                    className={"form-control mb-3"}
-                    onChange={handleFilter}
-                    placeholder={"Search Anything..."}
-                  />
-                </div>
-              </div>
-              <div className="table-responsive">
-                <DataTable
-                  columns={columns}
-                  data={filteredItems}
-                  pagination
-                  highlightOnHover
-                />
-              </div>
+              <CDataTable
+                onChange={handleFilter}
+                columns={columns}
+                data={filteredItems}
+              />
             </div>
           </CCard>
         </div>
@@ -241,7 +227,7 @@ export default function Account() {
                 <div className="row">
                   <div className="col-12 col-lg-4 mb-3">
                     <label className="form-label">Consolidation</label>
-                    <select className="form-select mb-3" aria-label="Default">
+                    <select className="form-select" aria-label="Default">
                       <option selected>Select...</option>
                       <option value="yes">Yes</option>
                       <option value="no">No</option>
@@ -249,7 +235,7 @@ export default function Account() {
                   </div>
                   <div className="col-12 col-lg-4 mb-3">
                     <label className="form-label">Default Cost Center</label>
-                    <select className="form-select mb-3" aria-label="Default">
+                    <select className="form-select" aria-label="Default">
                       <option selected>Select...</option>
                       <option value="yes">Yes</option>
                       <option value="no">No</option>
@@ -257,7 +243,7 @@ export default function Account() {
                   </div>
                   <div className="col-12 col-lg-4 mb-3">
                     <label className="form-label">Status</label>
-                    <select className="form-select mb-3" aria-label="Default">
+                    <select className="form-select" aria-label="Default">
                       <option selected>Select...</option>
                       <option value="active">Active</option>
                       <option value="inactive">Inactive</option>
@@ -285,16 +271,16 @@ export default function Account() {
         {/* MODAL EDIT */}
         <div
           className="modal fade"
-          id="editPeriod"
+          id="editData"
           tabIndex={-1}
-          aria-labelledby="editPeriodLabel"
+          aria-labelledby="editDataLabel"
           aria-hidden="true"
         >
           <div className="modal-dialog modal-lg modal-dialog-centered">
             <div className="modal-content">
               <div className="modal-header">
-                <h5 className="modal-title" id="editPeriodLabel">
-                  Edit Period
+                <h5 className="modal-title" id="editDataLabel">
+                  Edit Account
                 </h5>
                 <button
                   type="button"
@@ -354,7 +340,7 @@ export default function Account() {
                 <div className="row">
                   <div className="col-12 col-lg-4 mb-3">
                     <label className="form-label">Consolidation</label>
-                    <select className="form-select mb-3" aria-label="Default">
+                    <select className="form-select" aria-label="Default">
                       <option selected>Select...</option>
                       <option value="yes">Yes</option>
                       <option value="no">No</option>
@@ -362,7 +348,7 @@ export default function Account() {
                   </div>
                   <div className="col-12 col-lg-4 mb-3">
                     <label className="form-label">Default Cost Center</label>
-                    <select className="form-select mb-3" aria-label="Default">
+                    <select className="form-select" aria-label="Default">
                       <option selected>Select...</option>
                       <option value="yes">Yes</option>
                       <option value="no">No</option>
@@ -370,7 +356,7 @@ export default function Account() {
                   </div>
                   <div className="col-12 col-lg-4 mb-3">
                     <label className="form-label">Status</label>
-                    <select className="form-select mb-3" aria-label="Default">
+                    <select className="form-select" aria-label="Default">
                       <option selected>Select...</option>
                       <option value="active">Active</option>
                       <option value="inactive">Inactive</option>

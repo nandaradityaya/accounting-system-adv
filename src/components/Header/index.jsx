@@ -109,7 +109,7 @@ function Header() {
               aria-expanded="false"
             >
               <img
-                src="../assets/images/avatars/nanda.jpg"
+                src="/assets/images/avatars/nanda.jpg"
                 className="user-img"
                 alt="user"
               />
