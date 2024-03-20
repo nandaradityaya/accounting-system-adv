@@ -140,6 +140,13 @@ function Sidebar() {
                   Open Period
                 </Link>
               </li>
+              <li>
+                {" "}
+                <Link type="button" to="/transaction/depreciation">
+                  <i className="bx bx-right-arrow-alt" />
+                  Depreciation
+                </Link>
+              </li>
             </ul>
           </li>
         </ul>

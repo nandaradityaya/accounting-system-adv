@@ -14,6 +14,7 @@ import { TransferJournalRoute } from "./transaction/TransferJournal";
 import { ConsolidationJournalRoute } from "./transaction/ConsolidationJournal";
 import { CloseMonthYearRoute } from "./transaction/CloseMonthYearRoute";
 import { OpenPeriodRoute } from "./transaction/OpenPeriodRoute";
+import { DepreciationRoute } from "./transaction/DepreciationRoute";
 
 export function AppRoutes() {
   return (
@@ -69,6 +70,10 @@ export function AppRoutes() {
       />
 
       <Route path="transaction/open-period/*" element={<OpenPeriodRoute />} />
+      <Route
+        path="transaction/depreciation/*"
+        element={<DepreciationRoute />}
+      />
 
       <Route path="" element={<Navigate to="/" replace={true} />} />
     </Routes>
