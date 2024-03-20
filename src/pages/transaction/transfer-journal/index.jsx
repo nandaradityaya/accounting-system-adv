@@ -9,219 +9,46 @@ import SelectTwo from "../../../components/Select2";
 // import { Tab, Tabs, TabList, TabPanel } from "react-tabs";
 import "react-tabs/style/react-tabs.css";
 import { TabComponent, TabContent } from "../../../components/Tabs";
-import BadgeStatus from "../../../components/Badge";
 import CButtonDelete from "../../../components/BtnActionDelete";
 import CButtonProcess from "../../../components/BtnActionProcess";
 
-export default function PostingJournal() {
-  const [filterText, setFilterText] = useState("");
-  const [filterByAccount, setFilterByAccount] = useState("");
-  const [filterDetail, setFilterDetail] = useState("");
-  const [filterByDocument, setFilterByDocument] = useState("");
-  const columns = [
+export default function TransferJournal() {
+  const [filterText1, setFilterText1] = useState("");
+  const [filter2, setFilter2] = useState("");
+  const [filter3, setFilter3] = useState("");
+  const [filter4, setFilter4] = useState("");
+
+  // Table Document lIst
+  const columns1 = [
     {
       name: "No",
       selector: (row) => row.no,
       sortable: true,
     },
     {
-      name: "Status",
-      selector: (row) => row.status,
-      sortable: true,
-      cell: (row) => <BadgeStatus status={row.status} />,
-    },
-    {
-      name: "No. Jurnal",
-      selector: (row) => row.noJurnal,
+      name: "Posting Date",
+      selector: (row) => row.postingDate,
       sortable: true,
     },
 
-    {
-      name: "No. Ref",
-      selector: (row) => row.noRef,
-      sortable: true,
-    },
-    {
-      name: "Journal Date",
-      selector: (row) => row.journalDate,
-      sortable: true,
-    },
-    {
-      name: "Debet",
-      selector: (row) => row.debet,
-      sortable: true,
-    },
-    {
-      name: "Credit",
-      selector: (row) => row.credit,
-      sortable: true,
-    },
-    {
-      name: "Action",
-      sortable: false,
-      cell: () => (
-        <div className="d-flex order-actions">
-          <CButtonProcess modal={"modal"} modalTarget={"#editLookup"} />
-          <CButtonDelete modal={"modal"} modalTarget={"#deleteData"} />
-        </div>
-      ),
-      //   button: true, // Set button property to true
-      ignoreRowClick: true,
-      allowOverflow: true,
-    },
-  ];
-
-  const data = [
-    {
-      id: 1,
-      no: 1,
-      status: "Posted",
-      noJurnal: "JNH/11/23010001",
-      noRef: "01/01/2024",
-      journalDate: "179.098.519",
-      debet: "179.098.519",
-      credit: "245.877.234",
-    },
-    {
-      id: 2,
-      no: 2,
-      status: "Unposting",
-      noJurnal: "JNH/11/23010001",
-      noRef: "01/01/2024",
-      journalDate: "179.098.519",
-      debet: "179.098.519",
-      credit: "245.877.234",
-    },
-  ];
-
-  const handleFilter = (e) => {
-    const value = e.target.value || "";
-    setFilterText(value);
-  };
-
-  const filteredItems = data.filter(
-    (item) =>
-      item.status.toLowerCase().includes(filterText.toLowerCase()) ||
-      item.noJurnal.toLowerCase().includes(filterText.toLowerCase()) ||
-      item.noRef.toLowerCase().includes(filterText.toLowerCase()) ||
-      item.journalDate.toLowerCase().includes(filterText.toLowerCase()) ||
-      item.debet.toLowerCase().includes(filterText.toLowerCase()) ||
-      item.credit.toLowerCase().includes(filterText.toLowerCase())
-  );
-
-  // Table By Account Here
-  const columnsByAccount = [
-    {
-      name: "No",
-      selector: (row) => row.no,
-      sortable: true,
-    },
-    {
-      name: "No. Jurnal",
-      selector: (row) => row.noJurnal,
-      sortable: true,
-    },
-
-    {
-      name: "No. Account",
-      selector: (row) => row.noAccount,
-      sortable: true,
-    },
-    {
-      name: "Description",
-      selector: (row) => row.description,
-      sortable: true,
-    },
-    {
-      name: "Debit",
-      selector: (row) => row.debit,
-      sortable: true,
-    },
-    {
-      name: "Credit",
-      selector: (row) => row.credit,
-      sortable: true,
-    },
-    {
-      name: "Action",
-      sortable: false,
-      cell: () => (
-        <div className="d-flex order-actions">
-          <CButtonProcess modal={"modal"} modalTarget={"#editLookup"} />
-          <CButtonDelete modal={"modal"} modalTarget={"#deleteData"} />
-        </div>
-      ),
-      //   button: true, // Set button property to true
-      ignoreRowClick: true,
-      allowOverflow: true,
-    },
-  ];
-
-  const dataByAccount = [
-    {
-      id: 1,
-      no: 1,
-      noJurnal: "JH8898",
-      noAccount: "4567",
-      description: "01/01/2024",
-      debit: "179.098.519",
-      credit: "245.877.234",
-    },
-    {
-      id: 2,
-      no: 2,
-      noJurnal: "5235345345",
-      noAccount: "8927",
-      description: "01/01/2024",
-      debit: "179.098.519",
-      credit: "245.877.234",
-    },
-  ];
-
-  const handleFilterByAccount = (e) => {
-    const value = e.target.value || "";
-    setFilterByAccount(value);
-  };
-
-  const filteredItemsByAccount = dataByAccount.filter(
-    (item) =>
-      item.noJurnal.toLowerCase().includes(filterByAccount.toLowerCase()) ||
-      item.noAccount.toLowerCase().includes(filterByAccount.toLowerCase()) ||
-      item.description.toLowerCase().includes(filterByAccount.toLowerCase()) ||
-      item.debit.toLowerCase().includes(filterByAccount.toLowerCase()) ||
-      item.credit.toLowerCase().includes(filterByAccount.toLowerCase())
-  );
-
-  // Table Detail Here
-  const columnsDetail = [
-    {
-      name: "No",
-      selector: (row) => row.no,
-      sortable: true,
-    },
-    {
-      name: "No. Account",
-      selector: (row) => row.noAccount,
-      sortable: true,
-    },
-    {
-      name: "Description",
-      selector: (row) => row.description,
-      sortable: true,
-    },
     {
       name: "No. Document",
       selector: (row) => row.noDocument,
       sortable: true,
     },
     {
-      name: "Debit",
-      selector: (row) => row.debit,
+      name: "Document Source",
+      selector: (row) => row.documentSource,
       sortable: true,
     },
     {
-      name: "Credit",
-      selector: (row) => row.credit,
+      name: "Transaction Value",
+      selector: (row) => row.transactionValue,
+      sortable: true,
+    },
+    {
+      name: "No. Reference",
+      selector: (row) => row.noReference,
       sortable: true,
     },
     {
@@ -239,56 +66,243 @@ export default function PostingJournal() {
     },
   ];
 
-  const dataDetail = [
+  const data1 = [
     {
       id: 1,
       no: 1,
-      noAccount: "4567",
-      description: "01/01/2024",
-      noDocument: "JK893",
-      debit: "179.098.519",
-      credit: "245.877.234",
+      postingDate: "18/09/2024",
+      noDocument: "JNH/11/23010001",
+      documentSource: "ASSET",
+      transactionValue: "179.098.519",
+      noReference: "89076352",
     },
     {
       id: 2,
       no: 2,
-      noAccount: "8927",
-      description: "01/01/2024",
-      noDocument: "5235345345",
-      debit: "179.098.519",
-      credit: "245.877.234",
+      postingDate: "18/09/2024",
+      noDocument: "JNH/11/23010001",
+      documentSource: "ASSET",
+      transactionValue: "179.098.519",
+      noReference: "89076352",
     },
   ];
 
-  const handleFilterDetail = (e) => {
+  const handleFilter1 = (e) => {
     const value = e.target.value || "";
-    setFilterDetail(value);
+    setFilterText1(value);
   };
 
-  const filteredItemsDetail = dataDetail.filter(
+  const filteredItems1 = data1.filter(
     (item) =>
-      item.noAccount.toLowerCase().includes(filterDetail.toLowerCase()) ||
-      item.description.toLowerCase().includes(filterDetail.toLowerCase()) ||
-      item.noDocument.toLowerCase().includes(filterDetail.toLowerCase()) ||
-      item.debit.toLowerCase().includes(filterDetail.toLowerCase()) ||
-      item.credit.toLowerCase().includes(filterDetail.toLowerCase())
+      item.postingDate.toLowerCase().includes(filterText1.toLowerCase()) ||
+      item.noDocument.toLowerCase().includes(filterText1.toLowerCase()) ||
+      item.documentSource.toLowerCase().includes(filterText1.toLowerCase()) ||
+      item.transactionValue.toLowerCase().includes(filterText1.toLowerCase()) ||
+      item.noReference.toLowerCase().includes(filterText1.toLowerCase())
   );
 
-  // Table By Document Here
-  const columnsByDocument = [
+  // Table Transfer History Here
+  const columns2 = [
     {
       name: "No",
       selector: (row) => row.no,
       sortable: true,
     },
+    {
+      name: "Transfer Date",
+      selector: (row) => row.transferDate,
+      sortable: true,
+    },
+
     {
       name: "No. Journal",
       selector: (row) => row.noJournal,
       sortable: true,
     },
     {
+      name: "Posting Date",
+      selector: (row) => row.postingDate,
+      sortable: true,
+    },
+    {
       name: "No. Document",
       selector: (row) => row.noDocument,
+      sortable: true,
+    },
+    {
+      name: "Document Source",
+      selector: (row) => row.documentSource,
+      sortable: true,
+    },
+    {
+      name: "Transaction Value",
+      selector: (row) => row.transactionValue,
+      sortable: true,
+    },
+    {
+      name: "No. Reference",
+      selector: (row) => row.noReference,
+      sortable: true,
+    },
+    {
+      name: "Action",
+      sortable: false,
+      cell: () => (
+        <div className="d-flex order-actions">
+          <CButtonProcess modal={"modal"} modalTarget={"#editLookup"} />
+          <CButtonDelete modal={"modal"} modalTarget={"#deleteData"} />
+        </div>
+      ),
+      //   button: true, // Set button property to true
+      ignoreRowClick: true,
+      allowOverflow: true,
+    },
+  ];
+
+  const data2 = [
+    {
+      id: 1,
+      no: 1,
+      transferDate: "20/03/2024",
+      noJournal: "4567",
+      postingDate: "01/01/2024",
+      noDocument: "JK786",
+      documentSource: "SOURCE",
+      transactionValue: "245.877.234",
+      noReference: "098765",
+    },
+    {
+      id: 2,
+      no: 2,
+      transferDate: "20/03/2024",
+      noJournal: "4567",
+      postingDate: "01/01/2024",
+      noDocument: "JK786",
+      documentSource: "SARA",
+      transactionValue: "245.877.234",
+      noReference: "098765",
+    },
+  ];
+
+  const handleFilter2 = (e) => {
+    const value = e.target.value || "";
+    setFilter2(value);
+  };
+
+  const filteredItems2 = data2.filter(
+    (item) =>
+      item.transferDate.toLowerCase().includes(filter2.toLowerCase()) ||
+      item.noJournal.toLowerCase().includes(filter2.toLowerCase()) ||
+      item.postingDate.toLowerCase().includes(filter2.toLowerCase()) ||
+      item.noDocument.toLowerCase().includes(filter2.toLowerCase()) ||
+      item.documentSource.toLowerCase().includes(filter2.toLowerCase()) ||
+      item.transactionValue.toLowerCase().includes(filter2.toLowerCase()) ||
+      item.noReference.toLowerCase().includes(filter2.toLowerCase())
+  );
+
+  // Table Journal Detail Here
+  const columns3 = [
+    {
+      name: "No",
+      selector: (row) => row.no,
+      sortable: true,
+    },
+    {
+      name: "Document Date",
+      selector: (row) => row.documentDate,
+      sortable: true,
+    },
+    {
+      name: "No. Document",
+      selector: (row) => row.noDocument,
+      sortable: true,
+    },
+    {
+      name: "No. Account",
+      selector: (row) => row.noAccount,
+      sortable: true,
+    },
+    {
+      name: "Description",
+      selector: (row) => row.description,
+      sortable: true,
+    },
+    {
+      name: "No. Reference",
+      selector: (row) => row.noReference,
+      sortable: true,
+    },
+    {
+      name: "Debit",
+      selector: (row) => row.debit,
+      sortable: true,
+    },
+    {
+      name: "Credit",
+      selector: (row) => row.credit,
+      sortable: true,
+    },
+    {
+      name: "Action",
+      sortable: false,
+      cell: () => (
+        <div className="d-flex order-actions">
+          <CButtonProcess modal={"modal"} modalTarget={"#editLookup"} />
+          <CButtonDelete modal={"modal"} modalTarget={"#deleteData"} />
+        </div>
+      ),
+      //   button: true, // Set button property to true
+      ignoreRowClick: true,
+      allowOverflow: true,
+    },
+  ];
+
+  const data3 = [
+    {
+      id: 1,
+      no: 1,
+      documentDate: "15/03/2024",
+      noDocument: "7843",
+      noAccount: "24093",
+      description: "Lorem Ipsum",
+      noReference: "JK893",
+      debit: "179.098.519",
+      credit: "245.877.234",
+    },
+    {
+      id: 2,
+      no: 2,
+      documentDate: "15/03/2024",
+      noDocument: "7843",
+      noAccount: "24093",
+      description: "Lorem Apsum",
+      noReference: "JK893",
+      debit: "179.098.519",
+      credit: "245.877.234",
+    },
+  ];
+
+  const handleFilter3 = (e) => {
+    const value = e.target.value || "";
+    setFilter3(value);
+  };
+
+  const filteredItems3 = data3.filter(
+    (item) =>
+      item.documentDate.toLowerCase().includes(filter3.toLowerCase()) ||
+      item.noDocument.toLowerCase().includes(filter3.toLowerCase()) ||
+      item.noAccount.toLowerCase().includes(filter3.toLowerCase()) ||
+      item.description.toLowerCase().includes(filter3.toLowerCase()) ||
+      item.noReference.toLowerCase().includes(filter3.toLowerCase()) ||
+      item.debit.toLowerCase().includes(filter3.toLowerCase()) ||
+      item.credit.toLowerCase().includes(filter3.toLowerCase())
+  );
+
+  // Table Summary Here
+  const columns4 = [
+    {
+      name: "No",
+      selector: (row) => row.no,
       sortable: true,
     },
     {
@@ -327,42 +341,36 @@ export default function PostingJournal() {
     },
   ];
 
-  const dataByDocument = [
+  const data4 = [
     {
       id: 1,
       no: 1,
-      noJournal: "6969",
-      noDocument: "0909",
-      noAccount: "3000",
-      description: "01/01/2024",
+      noAccount: "7826",
+      description: "Lala lala",
       debit: "179.098.519",
       credit: "245.877.234",
     },
     {
-      id: 1,
-      no: 1,
-      noJournal: "6423",
-      noDocument: "4311",
-      noAccount: "1221",
-      description: "01/01/2024",
+      id: 2,
+      no: 2,
+      noAccount: "4542",
+      description: "lulu lula",
       debit: "179.098.519",
       credit: "245.877.234",
     },
   ];
 
-  const handleFilterByDocument = (e) => {
+  const handleFilter4 = (e) => {
     const value = e.target.value || "";
-    setFilterByDocument(value);
+    setFilter4(value);
   };
 
-  const filteredItemsByDocument = dataByDocument.filter(
+  const filteredItems4 = data4.filter(
     (item) =>
-      item.noJournal.toLowerCase().includes(filterByDocument.toLowerCase()) ||
-      item.noDocument.toLowerCase().includes(filterByDocument.toLowerCase()) ||
-      item.noAccount.toLowerCase().includes(filterByDocument.toLowerCase()) ||
-      item.description.toLowerCase().includes(filterByDocument.toLowerCase()) ||
-      item.debit.toLowerCase().includes(filterByDocument.toLowerCase()) ||
-      item.credit.toLowerCase().includes(filterByDocument.toLowerCase())
+      item.noAccount.toLowerCase().includes(filter4.toLowerCase()) ||
+      item.description.toLowerCase().includes(filter4.toLowerCase()) ||
+      item.debit.toLowerCase().includes(filter4.toLowerCase()) ||
+      item.credit.toLowerCase().includes(filter4.toLowerCase())
   );
 
   const optionCompany = [
@@ -390,7 +398,20 @@ export default function PostingJournal() {
     console.log(`Option selected:`, selectedPeriod);
   };
 
-  const [activeTab, setActiveTab] = useState("listJournal");
+  const optionDocumentNumber = [
+    { value: "01", label: "JH6781" },
+    { value: "02", label: "RK8976" },
+    { value: "03", label: "YU1453" },
+  ];
+
+  const [selectedDocumentNumber, setselectedDocumentNumber] = useState(null);
+
+  const handleChangeDocumentNumber = (selectedDocumentNumber) => {
+    setselectedDocumentNumber(selectedDocumentNumber);
+    console.log(`Option selected:`, selectedDocumentNumber);
+  };
+
+  const [activeTab, setActiveTab] = useState("tabMenu1");
 
   const handleTabClick = (tabId) => {
     setActiveTab(tabId);
@@ -402,27 +423,17 @@ export default function PostingJournal() {
         <div className="page-content">
           <CBreadcrumb
             textFirst={"Transaction"}
-            textSecond={"Posting/Unposting Journal"}
+            textSecond={"Transfer Journal"}
           ></CBreadcrumb>
 
           <CCard>
             <div className="card-header">
               <div className="d-flex justify-content-center align-items-center mb-4">
                 <div>
-                  <h5 className="font-weight-bold mb-0">
-                    Posting/Unposting Journal
-                  </h5>
+                  <h5 className="font-weight-bold mb-0">Transfer Journal</h5>
                 </div>
               </div>
               <div className="row">
-                <div className="col-12 col-lg-4 mb-3">
-                  <label className="form-label">Journal Type</label>
-                  <select className="form-select" aria-label="Default">
-                    <option selected>Select...</option>
-                    <option value="daily">Daily</option>
-                    <option value="audit">Audit</option>
-                  </select>
-                </div>
                 <div className="col-12 col-lg-4 mb-3">
                   <SelectTwo
                     label={"Company"}
@@ -441,7 +452,7 @@ export default function PostingJournal() {
                     placeholder={"Fiskal Year..."}
                   />
                 </div>
-                <div className="col-12 col-lg-6 mb-3">
+                <div className="col-12 col-lg-4 mb-3">
                   <SelectTwo
                     label={"Period"}
                     value={selectedPeriod}
@@ -451,86 +462,94 @@ export default function PostingJournal() {
                   />
                 </div>
                 <div className="col-12 col-lg-6 mb-3">
-                  <label className="form-label">Status</label>
+                  <label className="form-label">Document Source</label>
                   <select className="form-select" aria-label="Default">
                     <option selected>Select...</option>
-                    <option value="posted">Posted</option>
-                    <option value="unposted">Unposted</option>
+                    <option value="ap">AP</option>
+                    <option value="ar">AR</option>
+                    <option value="sp">SP</option>
                   </select>
+                </div>
+                <div className="col-12 col-lg-6 mb-3">
+                  <SelectTwo
+                    label={"No. Document"}
+                    value={selectedDocumentNumber}
+                    onChange={handleChangeDocumentNumber}
+                    options={optionDocumentNumber}
+                    isClearable={true}
+                  />
                 </div>
               </div>
             </div>
             <div className="card-body">
               <ul className="nav nav-tabs nav-primary" role="tablist">
                 <TabComponent
-                  id="listJournal"
+                  id="tabMenu1"
                   // iconClass="bxs-home"
-                  title="List Journal"
-                  active={activeTab === "listJournal"}
+                  title="List Document"
+                  active={activeTab === "tabMenu1"}
                   handleClick={handleTabClick}
                 />
                 <TabComponent
-                  id="byAccount"
+                  id="tabMenu2"
                   // iconClass="bxs-user-pin"
-                  title="By Account"
-                  active={activeTab === "byAccount"}
+                  title="Journal Transfer History"
+                  active={activeTab === "tabMenu2"}
                   handleClick={handleTabClick}
                 />
                 <TabComponent
-                  id="detailTab"
+                  id="tabMenu3"
                   // iconClass="bxs-microphone"
-                  title="Detail"
-                  active={activeTab === "detailTab"}
+                  title="Journal Detail"
+                  active={activeTab === "tabMenu3"}
                   handleClick={handleTabClick}
                 />
                 <TabComponent
-                  id="byDocument"
+                  id="tabMenu4"
                   // iconClass="bxs-microphone"
-                  title="By Document"
-                  active={activeTab === "byDocument"}
+                  title="Journal Summary"
+                  active={activeTab === "tabMenu4"}
                   handleClick={handleTabClick}
                 />
               </ul>
               <div className="tab-content py-3">
-                <TabContent
-                  id="listJournal"
-                  active={activeTab === "listJournal"}
-                >
+                <TabContent id="tabMenu1" active={activeTab === "tabMenu1"}>
                   <CDataTable
-                    onChange={handleFilter}
-                    columns={columns}
-                    data={filteredItems}
+                    onChange={handleFilter1}
+                    columns={columns1}
+                    data={filteredItems1}
                   />
-                </TabContent>
-                <TabContent id="byAccount" active={activeTab === "byAccount"}>
-                  <CDataTable
-                    onChange={handleFilterByAccount}
-                    columns={columnsByAccount}
-                    data={filteredItemsByAccount}
-                  />
-                  <div className="d-flex align-items-center justify-content-end mt-3">
-                    <p className="mb-0 me-2">Total:</p>
-                    <input
-                      className="form-control width-250"
-                      type="text"
-                      value={"5.400.000"}
-                      aria-label="Disabled input"
-                      disabled
-                    />
+                  <div className="row">
+                    <div className="col-12 col-lg-3">
+                      <TextInput
+                        label={"Change Date"}
+                        type={"date"}
+                        className={"form-control"}
+                        id={"changeDate"}
+                        placeholder={"mm/dd/yyyy"}
+                      />
+                    </div>
                   </div>
                 </TabContent>
-                <TabContent id="detailTab" active={activeTab === "detailTab"}>
+                <TabContent id="tabMenu2" active={activeTab === "tabMenu2"}>
                   <CDataTable
-                    onChange={handleFilterDetail}
-                    columns={columnsDetail}
-                    data={filteredItemsDetail}
+                    onChange={handleFilter2}
+                    columns={columns2}
+                    data={filteredItems2}
                   />
                 </TabContent>
-                <TabContent id="byDocument" active={activeTab === "byDocument"}>
+                <TabContent id="tabMenu3" active={activeTab === "tabMenu3"}>
                   <CDataTable
-                    onChange={handleFilterByDocument}
-                    columns={columnsByDocument}
-                    data={filteredItemsByDocument}
+                    onChange={handleFilter3}
+                    columns={columns3}
+                    data={filteredItems3}
+                  />
+                </TabContent>
+                <TabContent id="tabMenu4" active={activeTab === "tabMenu4"}>
+                  <CDataTable
+                    onChange={handleFilter4}
+                    columns={columns4}
+                    data={filteredItems4}
                   />
                 </TabContent>
               </div>

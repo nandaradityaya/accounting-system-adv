@@ -168,7 +168,7 @@ export default function InputJournalDetail() {
       <div className="page-wrapper">
         <div className="page-content">
           <CBreadcrumb
-            textFirst={"Master"}
+            textFirst={"Transaction"}
             textSecond={"Input Journal"}
             textThird={"Detail Journal"}
             urlSecond={"/transaction/input-jurnal"}

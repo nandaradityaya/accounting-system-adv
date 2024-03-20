@@ -6,7 +6,6 @@ export function PostingJournalRoute() {
   return (
     <Routes>
       <Route path="/" element={<PostingJournal />} />
-      {/* <Route path="/:journalId" element={<InputJournalDetail />} /> */}
     </Routes>
   );
 }

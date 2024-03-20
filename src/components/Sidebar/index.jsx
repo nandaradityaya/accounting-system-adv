@@ -112,6 +112,13 @@ function Sidebar() {
                   Posting/Unposting Journal
                 </Link>
               </li>
+              <li>
+                {" "}
+                <Link type="button" to="/transaction/transfer-journal">
+                  <i className="bx bx-right-arrow-alt" />
+                  Transfer Journal
+                </Link>
+              </li>
             </ul>
           </li>
         </ul>

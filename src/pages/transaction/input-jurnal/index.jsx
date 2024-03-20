@@ -163,7 +163,7 @@ export default function InputJurnal() {
       <div className="page-wrapper">
         <div className="page-content">
           <CBreadcrumb
-            textFirst={"Master"}
+            textFirst={"Transaction"}
             textSecond={"Input Journal"}
           ></CBreadcrumb>
 

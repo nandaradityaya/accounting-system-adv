@@ -115,7 +115,7 @@ export default function ImportJournal() {
       <div className="page-wrapper">
         <div className="page-content">
           <CBreadcrumb
-            textFirst={"Master"}
+            textFirst={"Transaction"}
             textSecond={"Import Journal"}
           ></CBreadcrumb>
 
