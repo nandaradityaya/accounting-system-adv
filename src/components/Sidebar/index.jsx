@@ -126,6 +126,13 @@ function Sidebar() {
                   Consolidation Journal
                 </Link>
               </li>
+              <li>
+                {" "}
+                <Link type="button" to="/transaction/close-month-year">
+                  <i className="bx bx-right-arrow-alt" />
+                  Close Month/Year
+                </Link>
+              </li>
             </ul>
           </li>
         </ul>

@@ -12,6 +12,7 @@ import { ImportJournalRoute } from "./transaction/ImportJournal";
 import { PostingJournalRoute } from "./transaction/PostingJournal";
 import { TransferJournalRoute } from "./transaction/TransferJournal";
 import { ConsolidationJournalRoute } from "./transaction/ConsolidationJournal";
+import { CloseMonthYearRoute } from "./transaction/CloseMonthYearRoute";
 
 export function AppRoutes() {
   return (
@@ -59,6 +60,11 @@ export function AppRoutes() {
       <Route
         path="transaction/consolidation-journal/*"
         element={<ConsolidationJournalRoute />}
+      />
+
+      <Route
+        path="transaction/close-month-year/*"
+        element={<CloseMonthYearRoute />}
       />
 
       <Route path="" element={<Navigate to="/" replace={true} />} />

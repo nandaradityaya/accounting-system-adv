@@ -8,6 +8,7 @@ function SelectTwo({
   options,
   isClearable,
   placeholder,
+  disabled,
 }) {
   return (
     <>
@@ -18,6 +19,7 @@ function SelectTwo({
         options={options}
         isClearable={isClearable}
         placeholder={placeholder}
+        isDisabled={disabled}
       />
     </>
   );
