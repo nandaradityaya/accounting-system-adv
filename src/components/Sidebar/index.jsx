@@ -133,6 +133,13 @@ function Sidebar() {
                   Close Month/Year
                 </Link>
               </li>
+              <li>
+                {" "}
+                <Link type="button" to="/transaction/open-period">
+                  <i className="bx bx-right-arrow-alt" />
+                  Open Period
+                </Link>
+              </li>
             </ul>
           </li>
         </ul>
