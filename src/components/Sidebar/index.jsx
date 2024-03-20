@@ -119,6 +119,13 @@ function Sidebar() {
                   Transfer Journal
                 </Link>
               </li>
+              <li>
+                {" "}
+                <Link type="button" to="/transaction/consolidation-journal">
+                  <i className="bx bx-right-arrow-alt" />
+                  Consolidation Journal
+                </Link>
+              </li>
             </ul>
           </li>
         </ul>

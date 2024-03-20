@@ -11,6 +11,7 @@ import { InputJournalAuditRoute } from "./transaction/InputJurnalAuditRoute";
 import { ImportJournalRoute } from "./transaction/ImportJournal";
 import { PostingJournalRoute } from "./transaction/PostingJournal";
 import { TransferJournalRoute } from "./transaction/TransferJournal";
+import { ConsolidationJournalRoute } from "./transaction/ConsolidationJournal";
 
 export function AppRoutes() {
   return (
@@ -54,6 +55,10 @@ export function AppRoutes() {
       <Route
         path="transaction/transfer-journal/*"
         element={<TransferJournalRoute />}
+      />
+      <Route
+        path="transaction/consolidation-journal/*"
+        element={<ConsolidationJournalRoute />}
       />
 
       <Route path="" element={<Navigate to="/" replace={true} />} />

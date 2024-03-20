@@ -56,7 +56,7 @@ export default function TransferJournal() {
       sortable: false,
       cell: () => (
         <div className="d-flex order-actions">
-          <CButtonProcess modal={"modal"} modalTarget={"#editLookup"} />
+          <CButtonProcess modal={"modal"} modalTarget={"#processModal"} />
           <CButtonDelete modal={"modal"} modalTarget={"#deleteData"} />
         </div>
       ),
@@ -149,7 +149,7 @@ export default function TransferJournal() {
       sortable: false,
       cell: () => (
         <div className="d-flex order-actions">
-          <CButtonProcess modal={"modal"} modalTarget={"#editLookup"} />
+          <CButtonProcess modal={"modal"} modalTarget={"#processModal"} />
           <CButtonDelete modal={"modal"} modalTarget={"#deleteData"} />
         </div>
       ),
@@ -247,7 +247,7 @@ export default function TransferJournal() {
       sortable: false,
       cell: () => (
         <div className="d-flex order-actions">
-          <CButtonProcess modal={"modal"} modalTarget={"#editLookup"} />
+          <CButtonProcess modal={"modal"} modalTarget={"#processModal"} />
           <CButtonDelete modal={"modal"} modalTarget={"#deleteData"} />
         </div>
       ),
@@ -331,7 +331,7 @@ export default function TransferJournal() {
       sortable: false,
       cell: () => (
         <div className="d-flex order-actions">
-          <CButtonProcess modal={"modal"} modalTarget={"#editLookup"} />
+          <CButtonProcess modal={"modal"} modalTarget={"#processModal"} />
           <CButtonDelete modal={"modal"} modalTarget={"#deleteData"} />
         </div>
       ),
@@ -637,16 +637,16 @@ export default function TransferJournal() {
         {/* MODAL EDIT */}
         <div
           className="modal fade"
-          id="editLookup"
+          id="processModal"
           tabIndex={-1}
-          aria-labelledby="editLookupLabel"
+          aria-labelledby="processModalLabel"
           aria-hidden="true"
         >
           <div className="modal-dialog modal-lg modal-dialog-centered">
             <div className="modal-content">
               <div className="modal-header">
-                <h5 className="modal-title" id="editLookupLabel">
-                  Edit Journal
+                <h5 className="modal-title" id="processModalLabel">
+                  Process
                 </h5>
                 <button
                   type="button"
@@ -655,47 +655,7 @@ export default function TransferJournal() {
                   aria-label="Close"
                 />
               </div>
-              <div className="modal-body">
-                <div className="mb-3">
-                  <SelectTwo
-                    label={"Company"}
-                    value={selectedCompany}
-                    onChange={handleChangeCompany}
-                    options={optionCompany}
-                    isClearable={true}
-                  />
-                </div>
-                <div className="mb-3">
-                  <TextInput
-                    label={"Import"}
-                    type={"file"}
-                    className={"form-control mb-1"}
-                    id={"formFile"}
-                    placeholder={"Import..."}
-                  />
-                  <div>
-                    Download template{" "}
-                    <u type="button" className="text-primary">
-                      Here
-                    </u>
-                  </div>
-                </div>
-                <div className="mb-3">
-                  Notes:
-                  <ul>
-                    <li>The imported file must be an Excel file (xlsx)</li>
-                    <li>
-                      The imported Excel file ensures that there are no hidden
-                      rows
-                    </li>
-                    <li>The imported excel file must match the template</li>
-                    <li>
-                      Date format must be dd/mm/yyyy and make sure the text
-                      format
-                    </li>
-                  </ul>
-                </div>
-              </div>
+              <div className="modal-body">Fill Content</div>
               <div className="modal-footer">
                 <button
                   type="button"
