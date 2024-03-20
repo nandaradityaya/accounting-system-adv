@@ -3,7 +3,7 @@
 import TextInput from "../TextInput";
 import DataTable from "react-data-table-component";
 
-function CDataTable({ onChange, columns, data }) {
+function CDataTable({ onChange, columns, data, selectableRows }) {
   return (
     <>
       <div className="row">
@@ -17,7 +17,13 @@ function CDataTable({ onChange, columns, data }) {
         </div>
       </div>
       <div className="table-responsive">
-        <DataTable columns={columns} data={data} pagination highlightOnHover />
+        <DataTable
+          columns={columns}
+          data={data}
+          pagination
+          highlightOnHover
+          selectableRows={selectableRows}
+        />
       </div>
     </>
   );

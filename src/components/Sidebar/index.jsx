@@ -105,6 +105,13 @@ function Sidebar() {
                   Import Journal
                 </Link>
               </li>
+              <li>
+                {" "}
+                <Link type="button" to="/transaction/posting-journal">
+                  <i className="bx bx-right-arrow-alt" />
+                  Posting/Unposting Journal
+                </Link>
+              </li>
             </ul>
           </li>
         </ul>

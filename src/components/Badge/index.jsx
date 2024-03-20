@@ -2,10 +2,24 @@
 // import React from 'react';
 
 const BadgeStatus = ({ status }) => {
+  // const getStatusColor = (status) => {
+  //   return status === "Active" || status === "Open" || status === "Posted"
+  //     ? "primary"
+  //     : "secondary";
+  // };
   const getStatusColor = (status) => {
-    return status === "Active" || status === "Open" ? "primary" : "secondary";
+    const lowercaseStatus = status.toLowerCase();
+    switch (lowercaseStatus) {
+      case "open":
+      case "posted":
+      case "posting":
+        return "primary";
+      case "delete":
+        return "danger";
+      default:
+        return "secondary";
+    }
   };
-
   return (
     <div
       className={`badge rounded-pill text-${getStatusColor(
