@@ -79,8 +79,9 @@ export default function CloseMonthYear() {
                     isClearable={true}
                     disabled={isAuditChecked}
                   />
-                  <div className="d-flex align-items-center mt-2">
+                  <div className="form-check mt-2">
                     <input
+                      className="form-check-input"
                       type="checkbox"
                       id="audit"
                       name="audit"
@@ -88,7 +89,9 @@ export default function CloseMonthYear() {
                       checked={isAuditChecked}
                       onChange={handleChangeAudit}
                     />
-                    <span className="ms-1">Audit</span>
+                    <label className="form-check-label" htmlFor="audit">
+                      Audit
+                    </label>
                   </div>
                 </div>
               </div>

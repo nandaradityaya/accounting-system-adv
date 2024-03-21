@@ -2,6 +2,7 @@
 // import { useNavigate } from "react-router-dom";
 import { Link } from "react-router-dom";
 import { GrTransaction } from "react-icons/gr";
+import { TbReportSearch } from "react-icons/tb";
 
 function Sidebar() {
   // const navigate = useNavigate();
@@ -145,6 +146,51 @@ function Sidebar() {
                 <Link type="button" to="/transaction/depreciation">
                   <i className="bx bx-right-arrow-alt" />
                   Depreciation
+                </Link>
+              </li>
+            </ul>
+          </li>
+          <li>
+            <a href="#" className="has-arrow">
+              <div className="parent-icon">
+                <TbReportSearch />
+              </div>
+              <div className="menu-title">Report</div>
+            </a>
+            <ul>
+              <li>
+                {" "}
+                <Link type="button" to="/report/ledger">
+                  <i className="bx bx-right-arrow-alt" />
+                  Ledger
+                </Link>
+              </li>
+              <li>
+                {" "}
+                <Link type="button" to="/report/trial-balance">
+                  <i className="bx bx-right-arrow-alt" />
+                  Trial Balance
+                </Link>
+              </li>
+              <li>
+                {" "}
+                <Link type="button" to="/report/inquiry-trial-balance">
+                  <i className="bx bx-right-arrow-alt" />
+                  Inquiry Trial Balance
+                </Link>
+              </li>
+              <li>
+                {" "}
+                <Link type="button" to="/report/flexible-report">
+                  <i className="bx bx-right-arrow-alt" />
+                  Flexible Report
+                </Link>
+              </li>
+              <li>
+                {" "}
+                <Link type="button" to="/report/bank-in-out">
+                  <i className="bx bx-right-arrow-alt" />
+                  Bank In Out
                 </Link>
               </li>
             </ul>

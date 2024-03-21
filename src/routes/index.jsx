@@ -15,6 +15,11 @@ import { ConsolidationJournalRoute } from "./transaction/ConsolidationJournal";
 import { CloseMonthYearRoute } from "./transaction/CloseMonthYearRoute";
 import { OpenPeriodRoute } from "./transaction/OpenPeriodRoute";
 import { DepreciationRoute } from "./transaction/DepreciationRoute";
+import { LedgerRoute } from "./report/LedgerRoute";
+import { TrialBalanceRoute } from "./report/TrialBalanceRoute";
+import { FlexibleReportRoute } from "./report/FlexibleReportRoute";
+import { InquiryTrialBalanceRoute } from "./report/InquiryTrialBalanceRoute";
+import { BankInOutRoute } from "./report/BankInOutRoute";
 
 export function AppRoutes() {
   return (
@@ -74,6 +79,18 @@ export function AppRoutes() {
         path="transaction/depreciation/*"
         element={<DepreciationRoute />}
       />
+
+      <Route path="report/ledger/*" element={<LedgerRoute />} />
+      <Route path="report/trial-balance/*" element={<TrialBalanceRoute />} />
+      <Route
+        path="report/inquiry-trial-balance/*"
+        element={<InquiryTrialBalanceRoute />}
+      />
+      <Route
+        path="report/flexible-report/*"
+        element={<FlexibleReportRoute />}
+      />
+      <Route path="report/bank-in-out/*" element={<BankInOutRoute />} />
 
       <Route path="" element={<Navigate to="/" replace={true} />} />
     </Routes>
