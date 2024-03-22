@@ -3564,3 +3564,11 @@ input::placeholder {
   padding: 10px;
   background: #2d2d2d;
 } */
+
+.bg-home {
+  background-image: url("/assets/images/bg-themes/background_adv.jpeg");
+  background-repeat: no-repeat;
+  /* background-attachment: fixed; */
+  background-size: cover;
+  min-height: 500px;
+}

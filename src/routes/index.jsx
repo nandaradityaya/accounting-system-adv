@@ -20,10 +20,17 @@ import { TrialBalanceRoute } from "./report/TrialBalanceRoute";
 import { FlexibleReportRoute } from "./report/FlexibleReportRoute";
 import { InquiryTrialBalanceRoute } from "./report/InquiryTrialBalanceRoute";
 import { BankInOutRoute } from "./report/BankInOutRoute";
+import { MenuRoute } from "./utility/MenuRoute";
+import { MenuControlRoute } from "./utility/MenuControlRoute";
+import { UserGroupRoute } from "./utility/UserGroup";
+import { ChangePasswordRoute } from "./utility/ChangePasswordRoute";
+import { MenuAuthorizationRoute } from "./utility/MenuAuthorizationRoute";
+import { HomeRoute } from "./home/HomeRoute";
 
 export function AppRoutes() {
   return (
     <Routes>
+      <Route path="home/*" element={<HomeRoute />} />
       <Route path="master/reference/*" element={<ReferenceRoute />} />
       <Route
         path="master/document-numbering/*"
@@ -91,8 +98,19 @@ export function AppRoutes() {
         element={<FlexibleReportRoute />}
       />
       <Route path="report/bank-in-out/*" element={<BankInOutRoute />} />
+      <Route path="utility/menu/*" element={<MenuRoute />} />
+      <Route path="utility/menu-control/*" element={<MenuControlRoute />} />
+      <Route path="utility/user-group/*" element={<UserGroupRoute />} />
+      <Route
+        path="utility/change-password/*"
+        element={<ChangePasswordRoute />}
+      />
+      <Route
+        path="utility/menu-authorization/*"
+        element={<MenuAuthorizationRoute />}
+      />
 
-      <Route path="" element={<Navigate to="/" replace={true} />} />
+      <Route path="" element={<Navigate to="/home" replace={true} />} />
     </Routes>
   );
 }

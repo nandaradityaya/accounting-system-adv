@@ -6,7 +6,6 @@ import TextInput from "../../../components/TextInput";
 import { useState } from "react";
 import CDataTable from "../../../components/DataTable";
 import SelectTwo from "../../../components/Select2";
-import "react-tabs/style/react-tabs.css";
 import { TabComponent, TabContent } from "../../../components/Tabs";
 import CButtonDelete from "../../../components/BtnActionDelete";
 import CButtonProcess from "../../../components/BtnActionProcess";

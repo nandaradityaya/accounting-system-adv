@@ -97,7 +97,7 @@ export default function BankInOut() {
                 </CButton>
               </div>
             </div>
-            <div className="card-body"></div>
+            <div className="card-body">Data</div>
           </CCard>
         </div>
       </div>

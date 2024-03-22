@@ -1,5 +1,7 @@
 // import React from "react";
 
+import { Link } from "react-router-dom";
+
 function Header() {
   return (
     <header>
@@ -133,10 +135,14 @@ function Header() {
               </li>
               <li></li>
               <li>
-                <a className="dropdown-item" href="javaScript:;">
+                <Link
+                  type="button"
+                  className="dropdown-item"
+                  to="/utility/change-password"
+                >
                   <i className="bx bx-lock" />
                   <span>Change Password</span>
-                </a>
+                </Link>
               </li>
               <div className="dropdown-divider mb-0" />
               <li>

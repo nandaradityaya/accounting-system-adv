@@ -5,6 +5,7 @@ import { BrowserRouter } from "react-router-dom";
 import Sidebar from "./components/Sidebar";
 import Header from "./components/Header";
 import { AppRoutes } from "./routes";
+import Footer from "./components/Footer";
 
 // function Home() {
 //   return <h1>Home</h1>;
@@ -34,6 +35,7 @@ function App() {
         <Sidebar />
         <Header />
         <AppRoutes />
+        <Footer />
       </div>
     </BrowserRouter>
   );

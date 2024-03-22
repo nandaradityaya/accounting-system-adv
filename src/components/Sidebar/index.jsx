@@ -3,6 +3,7 @@
 import { Link } from "react-router-dom";
 import { GrTransaction } from "react-icons/gr";
 import { TbReportSearch } from "react-icons/tb";
+import { GoGear } from "react-icons/go";
 
 function Sidebar() {
   // const navigate = useNavigate();
@@ -10,14 +11,16 @@ function Sidebar() {
     <>
       <div className="sidebar-wrapper" data-simplebar="true">
         <div className="sidebar-header">
-          <div className="d-flex ms-2">
-            <div>
-              <img src="/logo.png" alt="logo icon" width={28} height={28} />
+          <Link type="button" to="/home">
+            <div className="d-flex ms-2">
+              <div>
+                <img src="/logo.png" alt="logo icon" width={28} height={28} />
+              </div>
+              <div>
+                <h6 className="text-white mt-1 ms-3">General Ledger</h6>
+              </div>
             </div>
-            <div>
-              <h6 className="text-white mt-1 ms-3">General Ledger</h6>
-            </div>
-          </div>
+          </Link>
           <div className="toggle-icon ms-auto">
             <i className="bx bx-first-page" />
           </div>
@@ -191,6 +194,44 @@ function Sidebar() {
                 <Link type="button" to="/report/bank-in-out">
                   <i className="bx bx-right-arrow-alt" />
                   Bank In Out
+                </Link>
+              </li>
+            </ul>
+          </li>
+          <li>
+            <a href="#" className="has-arrow">
+              <div className="parent-icon">
+                <GoGear />
+              </div>
+              <div className="menu-title">Utility</div>
+            </a>
+            <ul>
+              <li>
+                {" "}
+                <Link type="button" to="/utility/menu">
+                  <i className="bx bx-right-arrow-alt" />
+                  Menu
+                </Link>
+              </li>
+              <li>
+                {" "}
+                <Link type="button" to="/utility/menu-control">
+                  <i className="bx bx-right-arrow-alt" />
+                  Menu Control
+                </Link>
+              </li>
+              <li>
+                {" "}
+                <Link type="button" to="/utility/user-group">
+                  <i className="bx bx-right-arrow-alt" />
+                  User Group
+                </Link>
+              </li>
+              <li>
+                {" "}
+                <Link type="button" to="/utility/menu-authorization">
+                  <i className="bx bx-right-arrow-alt" />
+                  Menu Authorization
                 </Link>
               </li>
             </ul>
