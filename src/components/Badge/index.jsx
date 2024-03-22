@@ -13,6 +13,7 @@ const BadgeStatus = ({ status }) => {
       case "open":
       case "posted":
       case "posting":
+      case "active":
         return "primary";
       case "delete":
         return "danger";

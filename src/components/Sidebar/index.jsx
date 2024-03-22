@@ -17,7 +17,9 @@ function Sidebar() {
                 <img src="/logo.png" alt="logo icon" width={28} height={28} />
               </div>
               <div>
-                <h6 className="text-white mt-1 ms-3">General Ledger</h6>
+                <h6 className="logo-text font-16 text-white mt-1 ms-3">
+                  General Ledger
+                </h6>
               </div>
             </div>
           </Link>
@@ -31,7 +33,7 @@ function Sidebar() {
           <li>
             <a href="#" className="has-arrow">
               <div className="parent-icon">
-                <i className="bx bx-home" />
+                <i className="lni lni-home" />
               </div>
               <div className="menu-title">Master</div>
             </a>
