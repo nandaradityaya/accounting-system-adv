@@ -50,7 +50,7 @@ function ColFlexibleReportDetail() {
       cell: () => (
         <div className="d-flex order-actions">
           <CButtonEdit modal={"modal"} modalTarget={"#editDetail"} />
-          <CButtonDelete modal={"modal"} modalTarget={"#deleteData"} />
+          <CButtonDelete modal={"modal"} modalTarget={"#inactiveData"} />
         </div>
       ),
       //   button: true, // Set button property to true
@@ -185,7 +185,7 @@ function ColFlexibleReportDetail() {
                   />
                 </div>
                 <div className="row mb-3">
-                  <div className="col-12 col-lg-6">
+                  <div className="col-12 col-lg-6 mb-3">
                     <label className="form-label">Type</label>
                     <select className="form-select" aria-label="Default">
                       <option selected>Select...</option>
@@ -194,7 +194,7 @@ function ColFlexibleReportDetail() {
                       <option value="precentage">Precentage</option>
                     </select>
                   </div>
-                  <div className="col-12 col-lg-6">
+                  <div className="col-12 col-lg-6 mb-3">
                     <SelectTwo
                       label={"Calculation Period"}
                       value={selectedCalculationPeriod}
@@ -204,7 +204,7 @@ function ColFlexibleReportDetail() {
                       placeholder={"Select..."}
                     />
                   </div>
-                  <div className="col-12 col-lg-6">
+                  <div className="col-12 col-lg-6 mb-3">
                     <TextInput
                       label={"Range 1"}
                       type={"text"}
@@ -213,7 +213,7 @@ function ColFlexibleReportDetail() {
                       placeholder={"Range 1..."}
                     />
                   </div>
-                  <div className="col-12 col-lg-6">
+                  <div className="col-12 col-lg-6 mb-3">
                     <TextInput
                       label={"Range 2"}
                       type={"text"}
@@ -271,7 +271,7 @@ function ColFlexibleReportDetail() {
                   />
                 </div>
                 <div className="row mb-3">
-                  <div className="col-12 col-lg-6">
+                  <div className="col-12 col-lg-6 mb-3">
                     <label className="form-label">Type</label>
                     <select className="form-select" aria-label="Default">
                       <option selected>Select...</option>
@@ -280,7 +280,7 @@ function ColFlexibleReportDetail() {
                       <option value="precentage">Precentage</option>
                     </select>
                   </div>
-                  <div className="col-12 col-lg-6">
+                  <div className="col-12 col-lg-6 mb-3">
                     <SelectTwo
                       label={"Calculation Period"}
                       value={selectedCalculationPeriod}
@@ -290,7 +290,7 @@ function ColFlexibleReportDetail() {
                       placeholder={"Select..."}
                     />
                   </div>
-                  <div className="col-12 col-lg-6">
+                  <div className="col-12 col-lg-6 mb-3">
                     <TextInput
                       label={"Range 1"}
                       type={"text"}
@@ -299,7 +299,7 @@ function ColFlexibleReportDetail() {
                       placeholder={"Range 1..."}
                     />
                   </div>
-                  <div className="col-12 col-lg-6">
+                  <div className="col-12 col-lg-6 mb-3">
                     <TextInput
                       label={"Range 2"}
                       type={"text"}
@@ -328,15 +328,15 @@ function ColFlexibleReportDetail() {
         {/* MODAL Delete */}
         <div
           className="modal fade"
-          id="deleteData"
+          id="inactiveData"
           tabIndex={-1}
-          aria-labelledby="deleteDataLabel"
+          aria-labelledby="inactiveDataLabel"
           aria-hidden="true"
         >
           <div className="modal-dialog modal-dialog-centered">
             <div className="modal-content">
               <div className="modal-header">
-                <h5 className="modal-title" id="deleteDataLabel">
+                <h5 className="modal-title" id="inactiveDataLabel">
                   Delete Lookup Code
                 </h5>
                 <button
@@ -347,17 +347,12 @@ function ColFlexibleReportDetail() {
                 />
               </div>
               <div className="modal-body">
-                <h6>Are you sure want to delete this data?</h6>
+                <h6>Are you sure want to inactive this data?</h6>
               </div>
               <div className="modal-footer">
-                <button
-                  type="button"
-                  className="btn btn-secondary"
-                  data-bs-dismiss="modal"
-                >
-                  Close
-                </button>
-                <CButton className={"btn btn-danger"}>Delete</CButton>
+                <CButton className={"btn btn-outline-secondary"}>
+                  Inactive
+                </CButton>
               </div>
             </div>
           </div>

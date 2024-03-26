@@ -35,15 +35,6 @@ export default function DetailAuthorizationMenu() {
                   <h5 className="font-weight-bold mb-2">Menu Authorization</h5>
                   <p>Accounting 1</p>
                 </div>
-                <div className="ms-auto mt-2">
-                  <CButton
-                    className={"btn btn-primary d-flex align-items-center"}
-                    modal={"modal"}
-                    modalTarget={"#addNewAuthorization"}
-                  >
-                    <i className="bx bx-check"></i>Submit
-                  </CButton>
-                </div>
               </div>
 
               <ul className="nav nav-tabs nav-primary" role="tablist">
@@ -1378,6 +1369,15 @@ export default function DetailAuthorizationMenu() {
                   </div>
                 </TabContent>
               </div>
+              <div className="d-flex justify-content-end mt-2">
+                <CButton
+                  className={"btn btn-primary d-flex align-items-center"}
+                  modal={"modal"}
+                  modalTarget={"#addNewAuthorization"}
+                >
+                  <i className="bx bx-check"></i>Submit
+                </CButton>
+              </div>
             </div>
           </CCard>
         </div>
@@ -1592,17 +1592,12 @@ export default function DetailAuthorizationMenu() {
                 />
               </div>
               <div className="modal-body">
-                <h6>Are you sure want to delete this data?</h6>
+                <h6>Are you sure want to inactive this data?</h6>
               </div>
               <div className="modal-footer">
-                <button
-                  type="button"
-                  className="btn btn-secondary"
-                  data-bs-dismiss="modal"
-                >
-                  Close
-                </button>
-                <CButton className={"btn btn-danger"}>Delete</CButton>
+                <CButton className={"btn btn-outline-secondary"}>
+                  Inactive
+                </CButton>
               </div>
             </div>
           </div>

@@ -1,3 +1,4 @@
+/* eslint-disable no-undef */
 // import React from "react";
 import CBreadcrumb from "../../../components/Breadcrumb";
 import CButtonDelete from "../../../components/BtnActionDelete";
@@ -66,7 +67,7 @@ export default function Period() {
       cell: () => (
         <div className="d-flex order-actions">
           <CButtonEdit modal={"modal"} modalTarget={"#editPeriod"} />
-          <CButtonDelete modal={"modal"} modalTarget={"#deleteData"} />
+          <CButtonDelete modal={"modal"} modalTarget={"#inactiveData"} />
         </div>
       ),
       //   button: true, // Set button property to true
@@ -140,6 +141,58 @@ export default function Period() {
     setselectedStatus(selectedStatus);
     console.log(`Option selected:`, selectedStatus);
   };
+
+  const currentYear = new Date().getFullYear();
+  const [selectedYear, setSelectedYear] = useState("");
+
+  const handleYearChange = (e) => {
+    let { value } = e.target;
+    setSelectedYear(value);
+    updateSelectedDate(selectedDate, selectedMonth, value);
+  };
+
+  const updateSelectedDate = (date, month, year) => {
+    if (date && month && year) {
+      let formats = [];
+      const formattedDate = new Date(year, month - 1, date);
+      setFinalDate(formattedDate.toISOString());
+      const dt = new Date(formattedDate);
+      formats.push({
+        id: 1,
+        label: "YYYY-MM-DD",
+        date: dt.toISOString().slice(0, 10),
+      });
+      formats.push({
+        id: 2,
+        label: "MM/DD/YYYY",
+        date: `${dt.getMonth() + 1}/${dt.getDate()}/${dt.getFullYear()}`,
+      });
+      formats.push({
+        id: 3,
+        label: "DD-MM-YYYY",
+        date: `${dt.getDate()}-${dt.getMonth() + 1}-${dt.getFullYear()}`,
+      });
+      setFormats([...formats]);
+    }
+  };
+
+  const renderYearOptions = () => {
+    const yearOptions = [
+      <option key={0} value={""} disabled>
+        Select
+      </option>,
+    ];
+
+    for (let i = currentYear; i >= 1900; i--) {
+      yearOptions.push(
+        <option key={i} value={i}>
+          {i}
+        </option>
+      );
+    }
+
+    return yearOptions;
+  };
   return (
     <>
       <div className="page-wrapper">
@@ -203,13 +256,14 @@ export default function Period() {
                   />
                 </div>
                 <div className="mb-3">
-                  <TextInput
-                    label={"Fiskal Year"}
-                    type={"text"}
-                    className={"form-control"}
-                    id={"fiskalYear"}
-                    placeholder={"Fiskal Year..."}
-                  />
+                  <label className="form-label">Fiskal Year</label>
+                  <select
+                    className="form-select"
+                    value={selectedYear}
+                    onChange={handleYearChange}
+                  >
+                    {renderYearOptions()}
+                  </select>
                 </div>
                 <div className="row">
                   <div className="col-12 col-lg-6 mb-3">
@@ -308,13 +362,14 @@ export default function Period() {
                   />
                 </div>
                 <div className="mb-3">
-                  <TextInput
-                    label={"Fiskal Year"}
-                    type={"text"}
-                    className={"form-control"}
-                    id={"fiskalYear"}
-                    placeholder={"Fiskal Year..."}
-                  />
+                  <label className="form-label">Fiskal Year</label>
+                  <select
+                    className="form-select"
+                    value={selectedYear}
+                    onChange={handleYearChange}
+                  >
+                    {renderYearOptions()}
+                  </select>
                 </div>
                 <div className="row">
                   <div className="col-12 col-lg-6 mb-3">
@@ -384,16 +439,16 @@ export default function Period() {
         {/* MODAL Delete */}
         <div
           className="modal fade"
-          id="deleteData"
+          id="inactiveData"
           tabIndex={-1}
-          aria-labelledby="deleteDataLabel"
+          aria-labelledby="inactiveDataLabel"
           aria-hidden="true"
         >
           <div className="modal-dialog modal-dialog-centered">
             <div className="modal-content">
               <div className="modal-header">
-                <h5 className="modal-title" id="deleteDataLabel">
-                  Delete Data
+                <h5 className="modal-title" id="inactiveDataLabel">
+                  Inactive Data
                 </h5>
                 <button
                   type="button"
@@ -403,17 +458,12 @@ export default function Period() {
                 />
               </div>
               <div className="modal-body">
-                <h6>Are you sure want to delete this data?</h6>
+                <h6>Are you sure want to inactive this data?</h6>
               </div>
               <div className="modal-footer">
-                <button
-                  type="button"
-                  className="btn btn-secondary"
-                  data-bs-dismiss="modal"
-                >
-                  Close
-                </button>
-                <CButton className={"btn btn-danger"}>Delete</CButton>
+                <CButton className={"btn btn-outline-secondary"}>
+                  Inactive
+                </CButton>
               </div>
             </div>
           </div>

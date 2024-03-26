@@ -69,7 +69,7 @@ export default function ColFlexibleReport() {
       cell: () => (
         <div className="d-flex order-actions">
           <CButtonEdit modal={"modal"} modalTarget={"#editReport"} />
-          <CButtonDelete modal={"modal"} modalTarget={"#deleteData"} />
+          <CButtonDelete modal={"modal"} modalTarget={"#inactiveData"} />
         </div>
       ),
       //   button: true, // Set button property to true
@@ -136,8 +136,11 @@ export default function ColFlexibleReport() {
                 <div className="ms-auto mt-2">
                   <CButton
                     className={"btn btn-primary d-flex align-items-center"}
-                    modal={"modal"}
-                    modalTarget={"#addNewReport"}
+                    action={() =>
+                      navigate(
+                        "/master/col-flexible-report/add-new-flexible-report"
+                      )
+                    }
                   >
                     <i className="bx bx-plus"></i>Add New
                   </CButton>
@@ -151,101 +154,6 @@ export default function ColFlexibleReport() {
             </div>
           </CCard>
         </div>
-
-        {/* MODAL ADD NEW */}
-        <div
-          className="modal fade"
-          id="addNewReport"
-          tabIndex={-1}
-          aria-labelledby="addNewReportLabel"
-          aria-hidden="true"
-        >
-          <div className="modal-dialog modal-lg modal-dialog-centered">
-            <div className="modal-content">
-              <div className="modal-header">
-                <h5 className="modal-title" id="addNewReportLabel">
-                  Add New Report
-                </h5>
-                <button
-                  type="button"
-                  className="btn-close"
-                  data-bs-dismiss="modal"
-                  aria-label="Close"
-                />
-              </div>
-              <div className="modal-body">
-                <div className="mb-3">
-                  <SelectTwo
-                    label={"Company"}
-                    value={selectedCompany}
-                    onChange={handleChangeCompany}
-                    options={optionCompany}
-                    isClearable={true}
-                    placeholder={"Select Company..."}
-                  />
-                </div>
-                <div className="row">
-                  <div className="col-12 col-lg-6 mb-3">
-                    <label className="form-label">Report Type</label>
-                    <select className="form-select" aria-label="Default">
-                      <option selected>Select...</option>
-                      <option value="normal">Normal</option>
-                      <option value="costcenter">Cost Center</option>
-                    </select>
-                  </div>
-                  <div className="col-12 col-lg-6 mb-3">
-                    <TextInput
-                      label={"ID Report"}
-                      type={"text"}
-                      className={"form-control"}
-                      id={"idReport"}
-                      placeholder={"ID Report..."}
-                    />
-                  </div>
-                  <div className="col-12 col-lg-6 mb-3">
-                    <TextInput
-                      label={"Title Report"}
-                      type={"text"}
-                      className={"form-control"}
-                      id={"titleReport"}
-                      placeholder={"Title Report..."}
-                    />
-                  </div>
-                  <div className="col-12 col-lg-6 mb-3">
-                    <TextInput
-                      label={"Total Column"}
-                      type={"number"}
-                      className={"form-control"}
-                      id={"totalColumn"}
-                      placeholder={"Total Column..."}
-                    />
-                  </div>
-                  <div className="col-12 col-lg-12 mb-3">
-                    <label className="form-label">Period</label>
-                    <select className="form-select" aria-label="Default">
-                      <option selected>Select...</option>
-                      <option value="monthly">Monthly</option>
-                      <option value="yearly">Yearly</option>
-                    </select>
-                  </div>
-                </div>
-              </div>
-              <div className="modal-footer">
-                <button
-                  type="button"
-                  className="btn btn-secondary"
-                  data-bs-dismiss="modal"
-                >
-                  Close
-                </button>
-                <button type="button" className="btn btn-primary">
-                  Save
-                </button>
-              </div>
-            </div>
-          </div>
-        </div>
-        {/* END MODAL ADD NEW */}
 
         {/* MODAL EDIT */}
         <div
@@ -343,16 +251,16 @@ export default function ColFlexibleReport() {
         {/* MODAL DELETE */}
         <div
           className="modal fade"
-          id="deleteData"
+          id="inactiveData"
           tabIndex={-1}
-          aria-labelledby="deleteDataLabel"
+          aria-labelledby="inactiveDataLabel"
           aria-hidden="true"
         >
           <div className="modal-dialog modal-dialog-centered">
             <div className="modal-content">
               <div className="modal-header">
-                <h5 className="modal-title" id="deleteDataLabel">
-                  Delete Data
+                <h5 className="modal-title" id="inactiveDataLabel">
+                  Inactive Data
                 </h5>
                 <button
                   type="button"
@@ -362,17 +270,12 @@ export default function ColFlexibleReport() {
                 />
               </div>
               <div className="modal-body">
-                <h6>Are you sure want to delete this data?</h6>
+                <h6>Are you sure want to inactive this data?</h6>
               </div>
               <div className="modal-footer">
-                <button
-                  type="button"
-                  className="btn btn-secondary"
-                  data-bs-dismiss="modal"
-                >
-                  Close
-                </button>
-                <CButton className={"btn btn-danger"}>Delete</CButton>
+                <CButton className={"btn btn-outline-secondary"}>
+                  Inactive
+                </CButton>
               </div>
             </div>
           </div>

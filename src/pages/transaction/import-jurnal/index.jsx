@@ -59,7 +59,7 @@ export default function ImportJournal() {
       cell: () => (
         <div className="d-flex order-actions">
           <CButtonEdit modal={"modal"} modalTarget={"#editLookup"} />
-          <CButtonDelete modal={"modal"} modalTarget={"#deleteData"} />
+          <CButtonDelete modal={"modal"} modalTarget={"#inactiveData"} />
         </div>
       ),
       //   button: true, // Set button property to true
@@ -301,16 +301,16 @@ export default function ImportJournal() {
         {/* MODAL DELETE */}
         <div
           className="modal fade"
-          id="deleteData"
+          id="inactiveData"
           tabIndex={-1}
-          aria-labelledby="deleteDataLabel"
+          aria-labelledby="inactiveDataLabel"
           aria-hidden="true"
         >
           <div className="modal-dialog modal-dialog-centered">
             <div className="modal-content">
               <div className="modal-header">
-                <h5 className="modal-title" id="deleteDataLabel">
-                  Delete Data
+                <h5 className="modal-title" id="inactiveDataLabel">
+                  Inactive Data
                 </h5>
                 <button
                   type="button"
@@ -320,17 +320,12 @@ export default function ImportJournal() {
                 />
               </div>
               <div className="modal-body">
-                <h6>Are you sure want to delete this data?</h6>
+                <h6>Are you sure want to inactive this data?</h6>
               </div>
               <div className="modal-footer">
-                <button
-                  type="button"
-                  className="btn btn-secondary"
-                  data-bs-dismiss="modal"
-                >
-                  Close
-                </button>
-                <CButton className={"btn btn-danger"}>Delete</CButton>
+                <CButton className={"btn btn-outline-secondary"}>
+                  Inactive
+                </CButton>
               </div>
             </div>
           </div>

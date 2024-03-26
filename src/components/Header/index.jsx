@@ -127,12 +127,6 @@ function Header() {
                   <span>Profile</span>
                 </a>
               </li>
-              <li>
-                <a className="dropdown-item" href="javaScript:;">
-                  <i className="bx bx-help-circle" />
-                  <span>Help Desk</span>
-                </a>
-              </li>
               <li></li>
               <li>
                 <Link

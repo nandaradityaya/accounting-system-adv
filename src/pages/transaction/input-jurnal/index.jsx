@@ -1,3 +1,4 @@
+/* eslint-disable no-undef */
 // import React from "react";
 import CBreadcrumb from "../../../components/Breadcrumb";
 import CButtonDelete from "../../../components/BtnActionDelete";
@@ -90,7 +91,7 @@ export default function InputJurnal() {
       cell: () => (
         <div className="d-flex order-actions">
           <CButtonEdit modal={"modal"} modalTarget={"#editLookup"} />
-          <CButtonDelete modal={"modal"} modalTarget={"#deleteData"} />
+          <CButtonDelete modal={"modal"} modalTarget={"#inactiveData"} />
         </div>
       ),
       //   button: true, // Set button property to true
@@ -158,6 +159,58 @@ export default function InputJurnal() {
     setselectedPeriod(selectedPeriod);
     console.log(`Option selected:`, selectedPeriod);
   };
+  // ---------------------
+  const currentYear = new Date().getFullYear();
+  const [selectedYear, setSelectedYear] = useState("");
+
+  const handleYearChange = (e) => {
+    let { value } = e.target;
+    setSelectedYear(value);
+    updateSelectedDate(selectedDate, selectedMonth, value);
+  };
+
+  const updateSelectedDate = (date, month, year) => {
+    if (date && month && year) {
+      let formats = [];
+      const formattedDate = new Date(year, month - 1, date);
+      setFinalDate(formattedDate.toISOString());
+      const dt = new Date(formattedDate);
+      formats.push({
+        id: 1,
+        label: "YYYY-MM-DD",
+        date: dt.toISOString().slice(0, 10),
+      });
+      formats.push({
+        id: 2,
+        label: "MM/DD/YYYY",
+        date: `${dt.getMonth() + 1}/${dt.getDate()}/${dt.getFullYear()}`,
+      });
+      formats.push({
+        id: 3,
+        label: "DD-MM-YYYY",
+        date: `${dt.getDate()}-${dt.getMonth() + 1}-${dt.getFullYear()}`,
+      });
+      setFormats([...formats]);
+    }
+  };
+
+  const renderYearOptions = () => {
+    const yearOptions = [
+      <option key={0} value={""} disabled>
+        Select
+      </option>,
+    ];
+
+    for (let i = currentYear; i >= 1900; i--) {
+      yearOptions.push(
+        <option key={i} value={i}>
+          {i}
+        </option>
+      );
+    }
+
+    return yearOptions;
+  };
   return (
     <>
       <div className="page-wrapper">
@@ -176,8 +229,11 @@ export default function InputJurnal() {
                 <div className="ms-auto mt-2">
                   <CButton
                     className={"btn btn-primary d-flex align-items-center"}
-                    modal={"modal"}
-                    modalTarget={"#addNewJurnal"}
+                    action={() =>
+                      navigate(
+                        "/transaction/input-jurnal/add-new-input-journal"
+                      )
+                    }
                   >
                     <i className="bx bx-plus"></i>Add New
                   </CButton>
@@ -191,109 +247,6 @@ export default function InputJurnal() {
             </div>
           </CCard>
         </div>
-
-        {/* MODAL ADD NEW */}
-        <div
-          className="modal fade"
-          id="addNewJurnal"
-          tabIndex={-1}
-          aria-labelledby="addNewJurnalLabel"
-          aria-hidden="true"
-        >
-          <div className="modal-dialog modal-lg modal-dialog-centered">
-            <div className="modal-content">
-              <div className="modal-header">
-                <h5 className="modal-title" id="addNewJurnalLabel">
-                  Add New Jurnal
-                </h5>
-                <button
-                  type="button"
-                  className="btn-close"
-                  data-bs-dismiss="modal"
-                  aria-label="Close"
-                />
-              </div>
-              <div className="modal-body">
-                <div className="row">
-                  <div className="col-12 col-lg-12 mb-3">
-                    <SelectTwo
-                      label={"Company"}
-                      value={selectedCompany}
-                      onChange={handleChangeCompany}
-                      options={optionCompany}
-                      isClearable={true}
-                    />
-                  </div>
-                  <div className="col-12 col-lg-6 mb-3">
-                    <TextInput
-                      label={"No. Jurnal"}
-                      type={"text"}
-                      className={"form-control"}
-                      id={"noJurnal"}
-                      placeholder={"No. Jurnal..."}
-                    />
-                  </div>
-                  <div className="col-12 col-lg-6 mb-3">
-                    <TextInput
-                      label={"Jurnal Date"}
-                      type={"date"}
-                      className={"form-control"}
-                      id={"jurnalDate"}
-                      placeholder={"Jurnal Date..."}
-                    />
-                  </div>
-                  <div className="col-12 col-lg-6 mb-3">
-                    <TextInput
-                      label={"Fiskal Year"}
-                      type={"text"}
-                      className={"form-control"}
-                      id={"fiskalYear"}
-                      placeholder={"Fiskal Year..."}
-                    />
-                  </div>
-                  <div className="col-12 col-lg-6 mb-3">
-                    <SelectTwo
-                      label={"Period"}
-                      value={selectedPeriod}
-                      onChange={handleChangePeriod}
-                      options={optionPeriod}
-                      isClearable={true}
-                    />
-                  </div>
-                  <div className="col-12 col-lg-12 mb-3">
-                    <TextInput
-                      label={"Reference"}
-                      type={"text"}
-                      className={"form-control"}
-                      id={"reference"}
-                      placeholder={"Reference..."}
-                    />
-                  </div>
-                  <div className="col-12 col-lg-12 mb-3">
-                    <TextInput
-                      label={"Reverse Date"}
-                      type={"date"}
-                      className={"form-control"}
-                      id={"reverseDate"}
-                      placeholder={"Reverse Date..."}
-                    />
-                  </div>
-                </div>
-              </div>
-              <div className="modal-footer">
-                <button
-                  type="button"
-                  className="btn btn-secondary"
-                  data-bs-dismiss="modal"
-                >
-                  Close
-                </button>
-                <CButton className={"btn btn-primary"}>Save</CButton>
-              </div>
-            </div>
-          </div>
-        </div>
-        {/* END MODAL ADD NEW */}
 
         {/* MODAL EDIT */}
         <div
@@ -346,13 +299,14 @@ export default function InputJurnal() {
                     />
                   </div>
                   <div className="col-12 col-lg-6 mb-3">
-                    <TextInput
-                      label={"Fiskal Year"}
-                      type={"text"}
-                      className={"form-control"}
-                      id={"fiskalYear"}
-                      placeholder={"Fiskal Year..."}
-                    />
+                    <label className="form-label">Fiskal Year</label>
+                    <select
+                      className="form-select"
+                      value={selectedYear}
+                      onChange={handleYearChange}
+                    >
+                      {renderYearOptions()}
+                    </select>
                   </div>
                   <div className="col-12 col-lg-6 mb-3">
                     <SelectTwo
@@ -401,16 +355,16 @@ export default function InputJurnal() {
         {/* MODAL DELETE */}
         <div
           className="modal fade"
-          id="deleteData"
+          id="inactiveData"
           tabIndex={-1}
-          aria-labelledby="deleteDataLabel"
+          aria-labelledby="inactiveDataLabel"
           aria-hidden="true"
         >
           <div className="modal-dialog modal-dialog-centered">
             <div className="modal-content">
               <div className="modal-header">
-                <h5 className="modal-title" id="deleteDataLabel">
-                  Delete Data
+                <h5 className="modal-title" id="inactiveDataLabel">
+                  Inactive Data
                 </h5>
                 <button
                   type="button"
@@ -420,17 +374,12 @@ export default function InputJurnal() {
                 />
               </div>
               <div className="modal-body">
-                <h6>Are you sure want to delete this data?</h6>
+                <h6>Are you sure want to inactive this data?</h6>
               </div>
               <div className="modal-footer">
-                <button
-                  type="button"
-                  className="btn btn-secondary"
-                  data-bs-dismiss="modal"
-                >
-                  Close
-                </button>
-                <CButton className={"btn btn-danger"}>Delete</CButton>
+                <CButton className={"btn btn-outline-secondary"}>
+                  Inactive
+                </CButton>
               </div>
             </div>
           </div>
