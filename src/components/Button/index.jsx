@@ -10,10 +10,11 @@ function CButton({
   className,
   modal,
   modalTarget,
+  type,
 }) {
   return (
     <button
-      type="button"
+      type={type}
       className={`radius-6 ${className}`}
       onClick={action}
       disabled={disabled}

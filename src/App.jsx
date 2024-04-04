@@ -1,11 +1,12 @@
 // import "./App.css";
 // import Header from "./components/Header";
-import { BrowserRouter } from "react-router-dom";
+import { BrowserRouter, Route, Routes } from "react-router-dom";
 // import Reference from "./pages/master/reference";
 import Sidebar from "./components/Sidebar";
 import Header from "./components/Header";
 import { AppRoutes } from "./routes";
 import Footer from "./components/Footer";
+import SignIn from "./pages/signin";
 
 // function Home() {
 //   return <h1>Home</h1>;
@@ -20,24 +21,28 @@ import Footer from "./components/Footer";
 // }
 
 function App() {
-  // const [count, setCount] = useState(0)
-
   return (
-    // <div className="wrapper">
-    //   <Sidebar />
-    //   <Header />
-    //   <div className="page-wrapper">
-    //     <div className="page-content"></div>
-    //   </div>
-    // </div>
     <BrowserRouter>
-      <div className="wrapper">
-        <Sidebar />
-        <Header />
-        <AppRoutes />
-        <Footer />
-      </div>
+      <Routes>
+        {/* Route for Sign In */}
+        <Route path="/signin" element={<SignIn />} />
+
+        {/* Route for other pages */}
+        <Route path="/*" element={<AppLayout />} />
+      </Routes>
     </BrowserRouter>
+  );
+}
+
+// AppLayout.jsx
+function AppLayout() {
+  return (
+    <div className="wrapper">
+      <Sidebar />
+      <Header />
+      <AppRoutes />
+      <Footer />
+    </div>
   );
 }
 
